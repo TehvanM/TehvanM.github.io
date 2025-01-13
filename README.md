@@ -1,5 +1,3 @@
 # TehvanM.github.io
 
-
-
-# Tere maailm
+Tere maailm
