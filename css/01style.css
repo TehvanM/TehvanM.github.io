@@ -52,9 +52,10 @@ body{
     color: #fff;
 }
 
-.nac ul{
+.nav ul{
     list-style-type: none;
     line-height: 50px;
+    padding: 30px 0;
 }
 
 .nav ul li{
@@ -67,7 +68,6 @@ body{
 .content h1, .content h2{
      font-weight: 400; 
      margin: 10px 0;
-     padding: 10px 0;
 }
 p{
     margin: 10px 0;
