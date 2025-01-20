@@ -21,17 +21,25 @@ body{
     max-width: 1200px;
     margin: auto;
     overflow: hidden;
-    
+
 }
 
 
 /*header*/
 
-
+.header{
+    background-color: #565656;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
 
 /*content*/
 
+.content.img.{
+    width: 100%;
 
+}
 
 /*footer*/
 
