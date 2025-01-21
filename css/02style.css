@@ -1,59 +1,31 @@
-/* Loo HTML leht ja vorminda CSS's
-
-Pilt tekstis: https://picsum.photos/
-Taustapilt: https://coolbackgrounds.io/
-Tekst: https://www.lipsum.com/
-
-Menüü
-    Kõrgus: 50px
-    Font: Montserrat, must, 18px
-    Padding: 12px 24px
-
-Banneri osa
-    Konteineri kõrgus 265px
-    Tekst keskel, Montserrat, valged, suurused 64px ja 24px
-    Nupp must, tekst 18, vahed 12px 24px
-Sisu osa
-    Konteineri kõrgus 400px
-    Pealkiri: Montserrat 36px
-    Tekst: Montserrat 18px ja 15px, reasamm 1.5, vahed tunde järgi, ülemine tekst rasvaselt
-    Pilt: 300x400px, tühi ala ümber pildi 20px, joondatud paremale
-    
-Jaluse osa
-    Värv: must, läbipaisvusega 64%
-    Tekst: keskel 24px
-    Tühi ala ümber: 64px
-Menüü */
 body, h1, h2, p, ul, li, a, button {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Styling */
 body {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.5;
     position: relative;
 }
 
-/* Menu Styling */
 .menu {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: transparent; /* Fully transparent background */
+    background-color: transparent;
     display: flex;
     justify-content: flex-start;
     padding: 12px 24px;
-    z-index: 1000; /* Ensure the menu is on top */
+    z-index: 1000;
 }
 
 .menu ul {
     list-style: none;
     display: flex;
-    flex-direction: row; /* Horizontal layout */
+    flex-direction: row;
     gap: 24px;
 }
 
@@ -64,7 +36,6 @@ body {
     font-weight: bold;
 }
 
-/* Banner Section */
 .banner {
     background: url('cool-background.png') no-repeat center center/cover;
     height: 400px;
@@ -96,18 +67,17 @@ body {
     border-radius: 5px;
 }
 
-/* Content Section */
 .content {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
-    gap: 40px; /* Increased gap between text and image */
+    gap: 40px;
 }
 
 .text-container {
     max-width: 30%;
-    text-align: left; /* Changed to left alignment */
+    text-align: left;
     padding: 0;
 }
 
@@ -122,9 +92,8 @@ body {
     margin-bottom: 15px;
 }
 
-/* Image Container */
 .image-container {
-    margin: 0; /* Remove margin-left */
+    margin: 0;
 }
 
 .image-container img {
@@ -134,7 +103,6 @@ body {
     border-radius: 10px;
 }
 
-/* Footer */
 .footer {
     background-color: rgba(0, 0, 0, 0.64);
     color: white;
