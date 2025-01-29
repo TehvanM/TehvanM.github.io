@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pealkiri</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .float-right {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>
+            <span class="text-danger float-right" data-toggle="popover" title="See on abitekst" data-content="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit... ma olen ikka nii tark :)">
+                <i class="bi bi-question-circle" style="font-size: 20px; color: red;"></i>
+            </span>
+            Lorem Ipsum
+        </h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas augue lacus, convallis nec velit id, ornare dignissim nisi. Donec cursus justo et lectus tempor bibendum. Duis volutpat rhoncus vulputate. Vivamus ut augue ac turpis suscipit fermentum ut sed mauris. Nam quis arcu elementum, congue metus ut, finibus massa. Mauris posuere justo vel lectus laoreet pretium. Vestibulum semper magna mattis nisi ultricies tempor. Duis pellentesque nisi nec sem molestie, ut venenatis tellus sollicitudin. Suspendisse aliquet libero vitae lectus scelerisque lacinia. Mauris vel justo cursus, dapibus nisl at, elementum tellus. Pellentesque sit amet dui commodo, fermentum magna ut, sodales turpis. Aliquam dictum mi semper augue cursus pulvinar. In eu ullamcorper nisl. Ut arcu tellus, sagittis eget pulvinar eu, vulputate sed nisl.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+</body>
+</html>
+
+
