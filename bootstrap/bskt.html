@@ -1,135 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Website</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-        /* Hero Section */
-        .hero {
-            background: url('https://source.unsplash.com/random/1600x900') center/cover no-repeat;
-            height: 25vh;
-            position: relative;
-            color: #fff;
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        /* Logos Section */
-        .logos .logo-item {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-        .logos .logo-item:hover {
-            transform: scale(1.05);
-        }
-        /* About Section */
-        .about-img {
-            width: 320px;
-            height: 320px;
-            background: #007bff;
-            display: block;
-            margin: 0 auto;
-        }
-        /* Blueprints Section */
-        .blueprint-item {
-            background-color: #007bff;
-            color: #fff;
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        /* Call To Action Section */
-        .cta {
-            background-color: #f8f9fa;
-            padding: 40px 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Custom CSS -->
+  <style>
+    .navbar {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .hero {
+      background: url('https://picsum.photos/1080/1920') center center/cover no-repeat;
+      height: 40vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.5);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .logo-block {
+      background-color: #007bff;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+    .card {
+      text-align: center;
+      border: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    .card-img-placeholder {
+      width: 100%;
+      height: 250px;
+      background-color: #007bff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      border-radius: 10px 10px 0 0;
+    }
+    .card-img-placeholder2 {
+      width: 100%;
+      height: 320px;
+      background-color: #007bff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      border-radius: 10px;
+    }
+    .progress-bar-text {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      font-weight: bold;
+      color: black;
+      line-height: 25px;
+    }
+    .call-to-action {
+      background-color: #f8f9fa;
+      padding: 40px 0;
+      margin: 40px 0;
+    }
+    .footer {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+    }
+  </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">Logo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Team</a></li>
-                </ul>
-                <ul class="navbar-nav ms-auto"></ul>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-facebook"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-twitter"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-instagram"></i></a></li>
-                    <li class="nav-item"><a class="btn btn-primary" href="#">Button</a></li>
-                </ul>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand bg-primary text-white px-4 py-2 rounded" href="#">Logo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Team</a></li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-twitter"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-instagram"></i></a></li>
+          <li class="nav-item"><a class="btn btn-outline-primary" href="#">Button</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-overlay">
+      <h1 class="display-4">About Us</h1>
+      <p class="lead">We create modern and responsive web solutions.</p>
+    </div>
+  </header>
+
+  <!-- Call to Action Section -->
+  <div class="call-to-action text-center">
+    <p class="mb-3">This is a call to action button below the header.</p>
+    <button class="btn btn-danger">Call to Action</button>
+  </div>
+
+  <!-- Logo Section -->
+  <div class="container my-5">
+    <div class="row text-center g-4">
+      <div class="col-md-4">
+        <div class="logo-block">L O G O</div>
+      </div>
+      <div class="col-md-4">
+        <div class="logo-block">L O G O</div>
+      </div>
+      <div class="col-md-4">
+        <div class="logo-block">L O G O</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div class="container my-5">
+    <div class="row g-4">
+      <div class="col-md-4 text-center">
+        <div class="card-img-placeholder2">320 x 320</div>
             </div>
+      <div class="col-md-4">
+        <h2>About Us</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <h5>Technologies Used:</h5>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge bg-primary">HTML</span>
+          <span class="badge bg-primary">CSS</span>
+          <span class="badge bg-primary">Bootstrap</span>
+          <span class="badge bg-primary">JavaScript</span>
+          <span class="badge bg-primary">Python</span>
+          <span class="badge bg-primary">PHP</span>
         </div>
-    </nav>
-    
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content text-center">
-            <h1 class="display-4">About Us</h1>
-            <p class="lead">Cover Header, 25% height, center align</p>
-            <a href="#" class="btn btn-danger btn-lg">Call to Action</a>
+      </div>
+      <div class="col-md-4">
+        <h2>Skills & Tools</h2>
+        <div class="mb-3">
+          <label></label>
+          <div class="progress position-relative" style="height: 20px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 83%;"></div>
+            <span class="progress-bar-text text-white">HTML</span>
+          </div>
         </div>
-    </header>
-    
-    <!-- Logos Section -->
-    <section class="logos py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="logo-item text-center">
-                        <div class="bg-primary text-white p-5">LOGO</div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="logo-item text-center">
-                        <div class="bg-primary text-white p-5">LOGO</div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="logo-item text-center">
-                        <div class="bg-primary text-white p-5">LOGO</div>
-                    </div>
-                </div>
+        <div class="mb-3">
+          <label>CSS</label>
+          <div class="progress position-relative" style="height: 25px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 85%;"></div>
+            <span class="progress-bar-text">85%</span>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label>JavaScript</label>
+          <div class="progress position-relative" style="height: 25px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 80%;"></div>
+            <span class="progress-bar-text">80%</span>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label>Python</label>
+          <div class="progress position-relative" style="height: 25px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 75%;"></div>
+            <span class="progress-bar-text">75%</span>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label>PHP</label>
+          <div class="progress position-relative" style="height: 25px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 60%;"></div>
+            <span class="progress-bar-text">60%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Section -->
+  <div class="container text-center my-5">
+    <h2>Section with Video</h2>
+    <p>A collection of coded HTML and CSS elements...</p>
+    <div class="d-flex justify-content-center gap-3 mb-4">
+      <button class="btn btn-primary">Download Now</button>
+      <button class="btn btn-secondary">Learn More</button>
+    </div>
+    <div class="ratio ratio-16x9">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Blueprints Section -->
+  <div class="container my-5">
+    <h2 class="text-center mb-4">Blueprints</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- Repeat this block for each blueprint -->
+      <div class="col">
+        <div class="card">
+          <div class="card-img-placeholder">300 x 250</div>
+          <div class="card-body">
+            <p class="card-text">Blueprint 1</p>
+          </div>
+        </div>
+      </div>
+      <!-- Add more blueprints here -->
+      <div class="col">
+        <div class="card">
+          <div class="card-img-placeholder">300 x 250</div>
+          <div class="card-body">
+            <p class="card-text">Blueprint 1</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-img-placeholder">300 x 250</div>
+          <div class="card-body">
+            <p class="card-text">Blueprint 1</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-img-placeholder">300 x 250</div>
+          <div class="card-body">
+            <p class="card-text">Blueprint 1</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-img-placeholder">300 x 250</div>
+          <div class="card-body">
+            <p class="card-text">Blueprint 1</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-img-placeholder">300 x 250</div>
+          <div class="card-body">
+            <p class="card-text">Blueprint 1</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-img-placeholder">300 x 250</div>
+          <div class="card-body">
+            <p class="card-text">Blueprint 1</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-img-placeholder">300 x 250</div>
+          <div class="card-body">
+            <p class="card-text">Blueprint 1</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-img-placeholder">300 x 250</div>
+          <div class="card-body">
+            <p class="card-text">Blueprint 1</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Final Call to Action -->
+  <div class="call-to-action text-center">
+    <h2>Ready to get started?</h2>
+    <button class="btn btn-dark">Call to Action</button>
+  </div>
+
+  <!-- Map Section -->
+  <div class="container-fluid p-0">
+    <iframe src="https://www.google.com/maps/embed?..." width="100%" height="300" style="border:0;"></iframe>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="container my-5">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <h2>Lorem Ipsum</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h2>Contact Us</h2>
+        <form>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="First Name">
             </div>
-        </div>
-    </section>
-    
-    <!-- About Section -->
-    <section class="about py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-4 text-center">
-                    <div class="about-img rounded"></div>
-                </div>
-                <div class="col-md-8">
-                    <h2>About Us</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae libero id justo bib
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Last Name">
+            </div>
+            <div class="col-12">
+              <input type="email" class="form-control" placeholder="Enter email">
+            </div>
+            <div class="col-12">
+              <input type="text" class="form-control" placeholder="Subject">
+            </div>
+            <div class="col-12">
+              <textarea class="form-control" placeholder="How can we help?"></textarea>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-primary w-100">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="mb-0">&copy; 2023 Your Company. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
