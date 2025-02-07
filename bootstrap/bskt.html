@@ -4,358 +4,255 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <!-- Font Awesome CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Custom CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    .navbar {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
     }
+
     .hero {
-      background: url('https://picsum.photos/1080/1920') center center/cover no-repeat;
-      height: 40vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                  url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920');
+      background-position: center;
+      background-size: cover;
+      height: 300px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      color: white;
+      justify-content: center;
       text-align: center;
+      color: white;
     }
-    .hero-overlay {
-      background: rgba(0, 0, 0, 0.5);
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .logo-block {
+
+    .logo-placeholder {
       background-color: #007bff;
-      height: 150px;
+      height: 100px;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       color: white;
-      font-weight: bold;
-      border-radius: 10px;
+      border-radius: 4px;
     }
-    .card {
-      text-align: center;
-      border: none;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+
+    .progress {
+      height: 8px;
+      background-color: #e9ecef;
+      margin-bottom: 1rem;
     }
-    .card:hover {
-      transform: translateY(-10px);
+
+    .progress-bar {
+      background-color: #007bff;
     }
-    .card-img-placeholder {
+
+    .blueprint-img {
       width: 100%;
       height: 250px;
       background-color: #007bff;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       color: white;
-      font-size: 20px;
-      border-radius: 10px 10px 0 0;
+      margin-bottom: 1rem;
+      border-radius: 4px;
     }
-    .card-img-placeholder2 {
-      width: 100%;
-      height: 320px;
+
+    .btn-primary {
       background-color: #007bff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 20px;
-      border-radius: 10px;
+      border: none;
+      padding: 8px 20px;
     }
-    .progress-bar-text {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      font-weight: bold;
-      color: black;
-      line-height: 25px;
+
+    .section {
+      padding: 60px 0;
     }
-    .call-to-action {
-      background-color: #f8f9fa;
-      padding: 40px 0;
-      margin: 40px 0;
-    }
-    .footer {
-      background-color: #343a40;
-      color: white;
-      padding: 20px 0;
+
+    .contact-form input,
+    .contact-form textarea {
+      margin-bottom: 1rem;
     }
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container">
-      <a class="navbar-brand bg-primary text-white px-4 py-2 rounded" href="#">Logo</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Team</a></li>
-        </ul>
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
-          <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-twitter"></i></a></li>
-          <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-instagram"></i></a></li>
-          <li class="nav-item"><a class="btn btn-outline-primary" href="#">Button</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
   <!-- Hero Section -->
   <header class="hero">
-    <div class="hero-overlay">
-      <h1 class="display-4">About Us</h1>
-      <p class="lead">We create modern and responsive web solutions.</p>
+    <div class="container">
+      <h1 class="display-4">About us</h1>
+      <p class="lead">Cover Height: 25% height / center align</p>
     </div>
   </header>
 
-  <!-- Call to Action Section -->
-  <div class="call-to-action text-center">
-    <p class="mb-3">This is a call to action button below the header.</p>
-    <button class="btn btn-danger">Call to Action</button>
-  </div>
+  <!-- CTA Section -->
+  <section class="py-4 text-center">
+    <div class="container">
+      <div class="d-flex justify-content-center align-items-center gap-3">
+        <p class="mb-0">Call to action text box This is some text and button within a call to action text block...</p>
+        <button class="btn btn-danger">Get Started</button>
+      </div>
+    </div>
+  </section>
 
   <!-- Logo Section -->
-  <div class="container my-5">
-    <div class="row text-center g-4">
-      <div class="col-md-4">
-        <div class="logo-block">L O G O</div>
-      </div>
-      <div class="col-md-4">
-        <div class="logo-block">L O G O</div>
-      </div>
-      <div class="col-md-4">
-        <div class="logo-block">L O G O</div>
+  <section class="section">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="logo-placeholder">LOGO</div>
+        </div>
+        <div class="col-md-4">
+          <div class="logo-placeholder">LOGO</div>
+        </div>
+        <div class="col-md-4">
+          <div class="logo-placeholder">LOGO</div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- About Section -->
-  <div class="container my-5">
-    <div class="row g-4">
-      <div class="col-md-4 text-center">
-        <div class="card-img-placeholder2">320 x 320</div>
-            </div>
-      <div class="col-md-4">
-        <h2>About Us</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-        <h5>Technologies Used:</h5>
-        <div class="d-flex flex-wrap gap-2">
-          <span class="badge bg-primary">HTML</span>
-          <span class="badge bg-primary">CSS</span>
-          <span class="badge bg-primary">Bootstrap</span>
-          <span class="badge bg-primary">JavaScript</span>
-          <span class="badge bg-primary">Python</span>
-          <span class="badge bg-primary">PHP</span>
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="logo-placeholder" style="height: 300px;">300 x 300</div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <h2>Skills & Tools</h2>
-        <div class="mb-3">
-          <label></label>
-          <div class="progress position-relative" style="height: 20px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 83%;"></div>
-            <span class="progress-bar-text text-white">HTML</span>
+        <div class="col-md-4">
+          <h2>About us</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <h5>Technologies used:</h5>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge bg-primary">HTML</span>
+            <span class="badge bg-primary">CSS</span>
+            <span class="badge bg-primary">JavaScript</span>
+            <span class="badge bg-primary">Python</span>
+            <span class="badge bg-primary">React</span>
+            <span class="badge bg-primary">Node.js</span>
           </div>
         </div>
-        <div class="mb-3">
-          <label>CSS</label>
-          <div class="progress position-relative" style="height: 25px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 85%;"></div>
-            <span class="progress-bar-text">85%</span>
+        <div class="col-md-4">
+          <h2>Skills & Tools</h2>
+          <div class="progress">
+            <div class="progress-bar" style="width: 90%"></div>
           </div>
-        </div>
-        <div class="mb-3">
-          <label>JavaScript</label>
-          <div class="progress position-relative" style="height: 25px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 80%;"></div>
-            <span class="progress-bar-text">80%</span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 80%"></div>
           </div>
-        </div>
-        <div class="mb-3">
-          <label>Python</label>
-          <div class="progress position-relative" style="height: 25px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 75%;"></div>
-            <span class="progress-bar-text">75%</span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 70%"></div>
           </div>
-        </div>
-        <div class="mb-3">
-          <label>PHP</label>
-          <div class="progress position-relative" style="height: 25px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 60%;"></div>
-            <span class="progress-bar-text">60%</span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 85%"></div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width: 75%"></div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Video Section -->
-  <div class="container text-center my-5">
-    <h2>Section with Video</h2>
-    <p>A collection of coded HTML and CSS elements...</p>
-    <div class="d-flex justify-content-center gap-3 mb-4">
-      <button class="btn btn-primary">Download Now</button>
-      <button class="btn btn-secondary">Learn More</button>
+  <section class="section text-center">
+    <div class="container">
+      <h2>Section with video</h2>
+      <p>A collection of coded HTML and CSS elements...</p>
+      <div class="d-flex justify-content-center gap-3 mb-4">
+        <button class="btn btn-primary">Download Now</button>
+        <button class="btn btn-outline-primary">Learn more</button>
+      </div>
+      <div class="ratio ratio-16x9">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video" allowfullscreen></iframe>
+      </div>
     </div>
-    <div class="ratio ratio-16x9">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-    </div>
-  </div>
+  </section>
 
   <!-- Blueprints Section -->
-  <div class="container my-5">
-    <h2 class="text-center mb-4">Blueprints</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <!-- Repeat this block for each blueprint -->
-      <div class="col">
-        <div class="card">
-          <div class="card-img-placeholder">300 x 250</div>
-          <div class="card-body">
-            <p class="card-text">Blueprint 1</p>
-          </div>
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center mb-4">Blueprints</h2>
+      <p class="text-center mb-5">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-      </div>
-      <!-- Add more blueprints here -->
-      <div class="col">
-        <div class="card">
-          <div class="card-img-placeholder">300 x 250</div>
-          <div class="card-body">
-            <p class="card-text">Blueprint 1</p>
-          </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-img-placeholder">300 x 250</div>
-          <div class="card-body">
-            <p class="card-text">Blueprint 1</p>
-          </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-img-placeholder">300 x 250</div>
-          <div class="card-body">
-            <p class="card-text">Blueprint 1</p>
-          </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-img-placeholder">300 x 250</div>
-          <div class="card-body">
-            <p class="card-text">Blueprint 1</p>
-          </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-img-placeholder">300 x 250</div>
-          <div class="card-body">
-            <p class="card-text">Blueprint 1</p>
-          </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-img-placeholder">300 x 250</div>
-          <div class="card-body">
-            <p class="card-text">Blueprint 1</p>
-          </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-img-placeholder">300 x 250</div>
-          <div class="card-body">
-            <p class="card-text">Blueprint 1</p>
-          </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-img-placeholder">300 x 250</div>
-          <div class="card-body">
-            <p class="card-text">Blueprint 1</p>
-          </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Final Call to Action -->
-  <div class="call-to-action text-center">
-    <h2>Ready to get started?</h2>
-    <button class="btn btn-dark">Call to Action</button>
-  </div>
+  <!-- Ready to Start Section -->
+  <section class="section text-center">
+    <div class="container">
+      <h2>Ready to get started?</h2>
+      <p>Call to action text box and button within a call to action text block.</p>
+      <button class="btn btn-dark">Get to know</button>
+    </div>
+  </section>
 
   <!-- Map Section -->
-  <div class="container-fluid p-0">
-    <iframe src="https://www.google.com/maps/embed?..." width="100%" height="300" style="border:0;"></iframe>
-  </div>
+  <section>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019287920712!2d144.9630579153169!3d-37.81410797975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d8b1b1b1b1b1!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1633072800000!5m2!1sen!2sau"
+      width="100%" 
+      height="400" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy">
+    </iframe>
+  </section>
 
   <!-- Contact Section -->
-  <div class="container my-5">
-    <div class="row g-4">
-      <div class="col-md-6">
-        <h2>Lorem Ipsum</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <h2>Contact Us</h2>
-        <form>
-          <div class="row g-3">
-            <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="First Name">
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Contact Us</h2>
+          <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p>Email: info@example.com</p>
+          <p>Phone: +1 234 567 890</p>
+        </div>
+        <div class="col-md-6">
+          <form class="contact-form">
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="First name">
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Last name">
+              </div>
             </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Last Name">
-            </div>
-            <div class="col-12">
-              <input type="email" class="form-control" placeholder="Enter email">
-            </div>
-            <div class="col-12">
-              <input type="text" class="form-control" placeholder="Subject">
-            </div>
-            <div class="col-12">
-              <textarea class="form-control" placeholder="How can we help?"></textarea>
-            </div>
-            <div class="col-12">
-              <button class="btn btn-primary w-100">Submit</button>
-            </div>
-          </div>
-        </form>
+            <input type="text" class="form-control" placeholder="Subject">
+            <textarea class="form-control" rows="4" placeholder="How can we help?"></textarea>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p class="mb-0">&copy; 2023 Your Company. All rights reserved.</p>
-  </footer>
-
-  <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

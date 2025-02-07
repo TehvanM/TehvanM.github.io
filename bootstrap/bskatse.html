@@ -1,357 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Set the character encoding -->
   <meta charset="UTF-8">
-  <!-- Ensure proper scaling on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Page title -->
   <title>About Us</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <!-- Font Awesome CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Custom styles for progress bar text -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    .progress-bar-text {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      font-weight: bold;
-      color: black;
-      line-height: 25px;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      padding-top: 76px;
     }
+
     .navbar {
+      background-color: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+
+    .navbar-brand {
+      background: #007bff;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+      background: #0056b3;
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .nav-link {
+      color: #4a5568;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #007bff;
+    }
+
     .hero {
-      background: url('https://picsum.photos/1080/1920') center center/cover no-repeat;
-      height: 30vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                  url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920');
+      background-position: center;
+      background-size: cover;
+      height: 300px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      color: white;
+      justify-content: center;
       text-align: center;
-    }
-    .hero-overlay {
-      background: rgba(0, 0, 0, 0.5);
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .logo-block {
-      background-color: #007bff;
-      height: 150px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       color: white;
-      font-weight: bold;
+      margin-top: -76px;
     }
-    .card {
-            text-align: center;
-        }
-    .card-img-placeholder {
-        width: 100%;
-        height: 250px;
-        background-color: blue;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        font-size: 20px;
-        }
+
+    .logo-placeholder {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .logo-placeholder:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .progress-container {
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .progress {
+      height: 8px;
+      background-color: #e9ecef;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      background: linear-gradient(90deg, #007bff, #0056b3);
+      transition: width 0.6s ease;
+    }
+
+    .blueprint-img {
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .blueprint-img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-primary {
+      background: #007bff;
+      border: none;
+      padding: 8px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: #0056b3;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .section {
+      padding: 60px 0;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <!-- Navbar brand/logo -->
-    <a class="navbar-brand bg-primary text-white px-5 py-1" href="#" style="font-size: 0.8rem;">Logo</a>
-      <!-- Toggle button for mobile view -->
+      <a class="navbar-brand" href="#">Mar&puu</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-    <!-- Navbar links -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto w-100 justify-content-start">
-        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Team</a></li>
-      </ul>
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
-        <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-twitter"></i></a></li>
-        <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-instagram"></i></a></li>
-        <li class="nav-item"><a class="btn btn-outline-secondary" href="#">Button</a></li>
-      </ul>
-    </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Team</a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center gap-3">
+          <a href="#" class="text-muted"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-muted"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-muted"><i class="fab fa-instagram"></i></a>
+          <button class="btn btn-outline-primary">Contact</button>
+        </div>
+      </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <header class="hero">
-    <div class="hero-overlay">
+    <div class="container">
       <h1 class="display-4">About us</h1>
-    <p class="lead">Cover Header, 25% height, center align</p>
-  
+      <p class="lead">Cover Height: 25% height / center align</p>
     </div>
   </header>
 
-  <div class="text-center mt-3">
-    <div class="d-flex justify-content-center align-items-center">
-        <p class="mb-0 me-2">This is a call to action button below the header.</p>
-        <button class="btn btn-danger">Call to Action</button>
+  <!-- CTA Section -->
+  <section class="py-4 text-center">
+    <div class="container">
+      <div class="d-flex justify-content-center align-items-center gap-3">
+        <p class="mb-0">Call to action text box This is some text and button within a call to action text block...</p>
+        <button class="btn btn-danger">Get Started</button>
+      </div>
     </div>
-</div>
+  </section>
 
   <!-- Logo Section -->
-  <div class="container my-5">
-    <div class="row text-center">
-      <div class="col-md-4">
-        <div class="logo-block">L O G O</div>
-      </div>
-      <div class="col-md-4">
-        <div class="logo-block">L O G O</div>
-      </div>
-      <div class="col-md-4">
-        <div class="logo-block">L O G O</div>
+  <section class="section">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="logo-placeholder">LOGO</div>
+        </div>
+        <div class="col-md-4">
+          <div class="logo-placeholder">LOGO</div>
+        </div>
+        <div class="col-md-4">
+          <div class="logo-placeholder">LOGO</div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- About Section -->
-  <div class="container my-5">
-    <div class="row">
-      <!-- Left Column: 320x320 Placeholder Image -->
-      <div class="col-md-4 text-center">
-        <!-- Placeholder image with fixed dimensions -->
-        <img src="images.png" alt="320x320 Placeholder" class="img-fluid" style="width:320px; height:320px;">
-      </div>
-      <!-- Middle Column: About Us Text and Technologies Used -->
-      <div class="col-md-4">
-        <!-- About Us heading -->
-        <h2>About Us</h2>
-        <!-- Lorem ipsum text -->
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-        <!-- Technologies used subheading -->
-        <h5>Technologies Used:</h5>
-        <!-- Technology badges -->
-        <span class="badge bg-primary">HTML</span>
-        <span class="badge bg-primary">CSS</span>
-        <span class="badge bg-primary">Bootstrap</span>
-        <span class="badge bg-primary">HTML</span>
-        <span class="badge bg-primary">CSS</span>
-        <span class="badge bg-primary">Bootstrap</span>
-      </div>
-      <!-- Right Column: Skills & Tools with Progress Bars -->
-      <div class="col-md-4">
-        <!-- Skills & Tools heading -->
-        <h2>Skills & Tools</h2>
-        <!-- HTML Skill Progress Bar -->
-        <div class="mb-3">
-          <label>HTML</label>
-          <div class="progress position-relative" style="height: 25px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-            <span class="progress-bar-text">90%</span>
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="logo-placeholder" style="height: 300px;">300 x 300</div>
+        </div>
+        <div class="col-md-4">
+          <h2>About us</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <h5>Technologies used:</h5>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge bg-primary">HTML</span>
+            <span class="badge bg-primary">CSS</span>
+            <span class="badge bg-primary">JavaScript</span>
+            <span class="badge bg-primary">Python</span>
+            <span class="badge bg-primary">Node.js</span>
+            <span class="badge bg-primary">PHP</span>
           </div>
         </div>
-        <!-- CSS Skill Progress Bar -->
-        <div class="mb-3">
-          <label>CSS</label>
-          <div class="progress position-relative" style="height: 25px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-            <span class="progress-bar-text">85%</span>
+        <div class="col-md-4">
+          <h2>Skills & Tools</h2>
+          <div class="progress-container">
+            <div class="progress-label">
+              <span>HTML</span>
+              <span>90%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width: 90%"></div>
+            </div>
           </div>
-        </div>
-        <!-- JavaScript Skill Progress Bar -->
-        <div class="mb-3">
-          <label>JavaScript</label>
-          <div class="progress position-relative" style="height: 25px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-            <span class="progress-bar-text">80%</span>
+          <div class="progress-container">
+            <div class="progress-label">
+              <span>CSS</span>
+              <span>85%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width: 85%"></div>
+            </div>
           </div>
-        </div>
-        <!-- Python Skill Progress Bar -->
-        <div class="mb-3">
-          <label>Python</label>
-          <div class="progress position-relative" style="height: 25px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-            <span class="progress-bar-text">75%</span>
+          <div class="progress-container">
+            <div class="progress-label">
+              <span>JavaScript</span>
+              <span>80%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width: 80%"></div>
+            </div>
           </div>
-        </div>
-        <!-- PHP Skill Progress Bar -->
-        <div class="mb-3">
-          <label>PHP</label>
-          <div class="progress position-relative" style="height: 25px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-            <span class="progress-bar-text">60%</span>
+          <div class="progress-container">
+            <div class="progress-label">
+              <span>Python</span>
+              <span>75%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width: 75%"></div>
+            </div>
+          </div>
+          <div class="progress-container">
+            <div class="progress-label">
+              <span>Node.js</span>
+              <span>70%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width: 70%"></div>
+            </div>
+          </div>
+          <div class="progress-container">
+            <div class="progress-label">
+              <span>PHP</span>
+              <span>65%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width: 65%"></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-<div class="container my-5">
-    <h2 class="text-center"></h2>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
-</div>
+  </section>
+
   <!-- Video Section -->
-  <div class="container text-center my-5">
-    <h2>Section with video</h2>
-    <p>A collection of coded HTML and CSS elements...</p>
-    <button class="btn btn-primary">Download Now</button>
-    <button class="btn btn-secondary">Learn More</button>
-    <div class="ratio ratio-16x9 mt-3">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+  <section class="section text-center">
+    <div class="container">
+      <h2>Section with video</h2>
+      <p>A collection of coded HTML and CSS elements...</p>
+      <div class="d-flex justify-content-center gap-3 mb-4">
+        <button class="btn btn-primary">Download Now</button>
+        <button class="btn btn-outline-primary">Learn more</button>
+      </div>
+      <div class="ratio ratio-16x9">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video" allowfullscreen></iframe>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- Blueprints Section -->
-<div class="container my-5">
-    <h2 class="text-center">Blueprints</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-            <div class="card border-0">
-                <div class="card-img-placeholder">300 x 250</div>
-                <div class="card-body">
-                    <p class="card-text">Blueprint 1</p>
-                </div>
-            </div>
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center mb-4">Blueprints</h2>
+      <p class="text-center mb-5">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-img-placeholder">300 x 250</div>
-                <div class="card-body">
-                    <p class="card-text">Blueprint 2</p>
-                </div>
-            </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-img-placeholder">300 x 250</div>
-                <div class="card-body">
-                    <p class="card-text">Blueprint 3</p>
-                </div>
-            </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-img-placeholder">300 x 250</div>
-                <div class="card-body">
-                    <p class="card-text">Blueprint 4</p>
-                </div>
-            </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-img-placeholder">300 x 250</div>
-                <div class="card-body">
-                    <p class="card-text">Blueprint 5</p>
-                </div>
-            </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-img-placeholder">300 x 250</div>
-                <div class="card-body">
-                    <p class="card-text">Blueprint 6</p>
-                </div>
-            </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-img-placeholder">300 x 250</div>
-                <div class="card-body">
-                    <p class="card-text">Blueprint 7</p>
-                </div>
-            </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-img-placeholder">300 x 250</div>
-                <div class="card-body">
-                    <p class="card-text">Blueprint 8</p>
-                </div>
-            </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-img-placeholder">300 x 250</div>
-                <div class="card-body">
-                    <p class="card-text">Blueprint 9</p></div>
-                </div>
-            </div>
+        <div class="col-md-4">
+          <div class="blueprint-img">300 x 250</div>
         </div>
+      </div>
     </div>
-    <div class="card-body text-center mt-4"></div>
-        </div>
-        <!-- Additional cards can be added here -->
+  </section>
+
+  <!-- Ready to Start Section -->
+  <section class="section text-center">
+    <div class="container">
+      <h2>Ready to get started?</h2>
+      <p>Call to action text box and button within a call to action text block.</p>
+      <button class="btn btn-dark">Get to know</button>
     </div>
-</div>
+  </section>
 
-  <!-- Call to Action Section -->
-  <div class="text-center bg-light py-5">
-    <h2>Ready to get started?</h2>
-    <button class="btn btn-dark">Call to Action</button>
-  </div>
-
-
-  <div class="container-fluid p-0">
-    <iframe src="https://www.google.com/maps/embed?..." width="100%" height="300"></iframe>
-  </div>
+  <!-- Map Section -->
+  <section>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019287920712!2d144.9630579153169!3d-37.81410797975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d8b1b1b1b1b1!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1633072800000!5m2!1sen!2sau"
+      width="100%" 
+      height="400" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy">
+    </iframe>
+  </section>
 
   <!-- Contact Section -->
-<div class="container my-5">
-    <div class="row">
+  <section class="section">
+    <div class="container">
+      <div class="row">
         <div class="col-md-6">
-            <h2>Lorem Ipsum</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
+          <h2>Contact Us</h2>
+          <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p>Email: info@example.com</p>
+          <p>Phone: +1 234 567 890</p>
         </div>
         <div class="col-md-6">
-            <h2>Contact Us</h2>
-            <form>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <!-- First Name input -->
-                        <input type="text" class="form-control" placeholder="First Name">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <!-- Last Name input -->
-                        <input type="text" class="form-control" placeholder="Last Name">
-                    </div>
-                </div>
-                <!-- Email input -->
-                <input type="email" class="form-control mb-3" placeholder="Enter email">
-                <!-- Subject input -->
-                <input type="text" class="form-control mb-3" placeholder="Subject">
-                <!-- Message textarea -->
-                <textarea class="form-control mb-3" placeholder="How can we help?"></textarea>
-                <button class="btn btn-primary">Submit</button>
-            </form>
+          <form class="contact-form">
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="First name">
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Last name">
+              </div>
+            </div>
+            <input type="text" class="form-control" placeholder="Subject">
+            <textarea class="form-control" rows="4" placeholder="How can we help?"></textarea>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
+      </div>
     </div>
-</div>
+  </section>
 
-  
-
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3">
-    <p>&copy; 2023 Your Company. All rights reserved.</p>
-  </footer>
-
-  <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
