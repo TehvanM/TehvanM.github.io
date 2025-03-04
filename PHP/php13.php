@@ -1,5 +1,5 @@
-<!-- AGATA BRETE JÕPISELG Koosta programm, mis lubab üles laadida ainult JPG ja JPEG faile
-Täienda sama programmi nii, et ma näeksin üleslaetud pildifaile ning neile klikkides kuvatakse pildid täies oma hiilguses  -->
+<!-- Tehvan Marjapuu php13
+ IT-23 -->
 <!doctype html>
 <html lang="et">
     <head>

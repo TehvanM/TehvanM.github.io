@@ -1,19 +1,5 @@
-<!-- AGATA BRETE JÕPISELG Vaatame mõningaid võimalusi kasutatava tekstifaili info kuvamise kohta.
-
-Faili nimi – nu selle väärtuse saame kenasti muutujast
-Faili suurus – seda me piilusime ka juba ning kuvab faili suuruse baitides
-Viimati muudetud – viimati muutmise all vaatame kolme funktsiooni:
-filectime() – kuvab viimati faili sisu ja metaandmete muutmise aja sekundites
-filemtime() – kuvab viimati faili sisu muutmise aja sekundites
-fileatime() – viimati faili kirjutatud või loetud aeg sekundites
-Üks tore funktsioon siinkohal on kasutada pathinfo(), mis kuvab faili omadused nagu:
-
-dirname – kataloog
-basename – faili nimi koos laiendusega
-filename – faili nimi
-extension – faili laiendus massiivina
-
--->
+<!-- Tehvan Marjapuu php12
+ IT-23 -->
 <!doctype html>
 <html lang="et">
     <head>

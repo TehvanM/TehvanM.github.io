@@ -1,5 +1,5 @@
 
-<!-- // Agata 07.02.25
+<!-- // Tehvan Marjapuu 12.02.25
 // Ülesanne 3 -->
 <h1>Ülesanne 3</h1>
 <form action="php01.php" method="get">
@@ -10,12 +10,12 @@
 </form>
 <?php
 if(isset($_GET["a"])&&isset($_GET["b"])){
-    $kylg_a = $_GET["a"];
-    $kylg_b = $_GET["b"];
-    $kylg_h = $_GET["h"];
-    $trapets_s=($kylg_a+$kylg_b)/2*$kylg_h;
-    $romb_p = 4 * $kylg_a;
-    printf("Külg A:%d<br> Külg B:%d<br> Kõrgus: %d Trapetsi pindala: %.2f<br> Romb: %d", $kylg_a, $kylg_b, $kylg_h, $trapets_s, $romb_p);
+    $kylgA = $_GET["a"];
+    $kylgB = $_GET["b"];
+    $kylgH = $_GET["h"];
+    $trapets_s=($kylg_a+$kylgB)/2*$kylgH;
+    $romb_p = 4 * $kylgA;
+    printf("Külg A:%d<br> Külg B:%d<br> Kõrgus: %d Trapetsi pindala: %.2f<br> Romb: %d", $kylgA, $kylgB, $kylgH, $trapets_s, $romb_p);
 }
 
 
@@ -23,7 +23,7 @@ if(isset($_GET["a"])&&isset($_GET["b"])){
 ?>
 
 
-<!-- // Agata 07.02.25
+<!-- // Tehvan Marjapuu 12.02.25
 // Ülesanne 2 -->
 
 <h1>Ülesanne 2</h1>
@@ -37,12 +37,12 @@ if(isset($_GET["a"])&&isset($_GET["b"])){
 <?php
 
 if(isset($_GET["a"])&&isset($_GET["b"])){
-    $kylg_a = $_GET["a"];
-    $kylg_b = $_GET["b"];
-    $kylg_c = sqrt(pow($kylg_a,2) + pow($kylg_b,2));
-    $pindala = $kylg_a * $kylg_b / 2;
-    $ymbermoot = $kylg_a+$kylg_b+$kylg_c;
-    printf("Külg A:%d<br>Külg B:%d<br> Pindala: %d<br> Ümbermõõt: %d", $kylg_a, $kylg_b, $pindala, $ymbermoot);
+    $kylgA = $_GET["a"];
+    $kylgB = $_GET["b"];
+    $kylgC = sqrt(pow($kylgA,2) + pow($kylgB,2));
+    $pindala = $kylgA * $kylgB / 2;
+    $ymbermoot = $kylgA+$kylgB+$kylgC;
+    printf("Külg A:%d<br>Külg B:%d<br> Pindala: %d<br> Ümbermõõt: %d", $kylgA, $kylgB, $pindala, $ymbermoot);
 }
 
 
@@ -72,7 +72,7 @@ echo "<h2>Liitmine</h2>";
 
 ?>
 
-<!-- // Agata 07.02.25
+<!-- // Tehvan Marjapuu 12.02.25
 // Ülesanne 1 -->
 <h1>Ülesanne 1</h1>
 

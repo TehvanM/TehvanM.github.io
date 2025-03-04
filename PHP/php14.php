@@ -1,5 +1,5 @@
-<!-- AGATA BRETE JÕPISELG Suvaline pilt – koosta kood, mis valib kataloogist suvalise pildi
-Pisipildid veergudes – koosta kood, mis kuvab pisipildid näiteks kolmes veerus. Piltidele klikkides kuvatakse suurem pilt ning veergude arvu saan koodis kiiresti muuta. Pisipildid võid tekitada Photoshsopi abiga. -->
+<!-- Tehvan Marjapuu php14
+ IT-23 -->
 <!doctype html>
 <html lang="et">
     <head>

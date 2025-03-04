@@ -1,26 +1,5 @@
-<!-- 
-Ülesanne 7
-Tervitus
-koosta funktsioon, mis tervitab. Näiteks: “Tere päiksekesekene!”
-Liitu uudiskirjaga
-koosta funktsioon, mis genereerib Bootstrapi uudiskirjaga liitumise vormi (vorm ja nupp)
-Kasutajanimi ja email
-loo funktsioon, mis muudab kasutajanime väikesteks tähtedeks
-täienda funktsiooni, et kasutajanimele luuakse “@hkhk.edu.ee” lõpuga email
-täienda funktsiooni nii, et kasutajale luuakse 7-kohaline kood
-täienda koodi nii, et luuakse tähed ja numbrid läbisegamini
-Arvud
-koosta funktsioon, mis lubab kasutajal valida arvude vahemikku. Näiteks 2 ja 8, tekitavad 2, 3, 4, 5, 6, 7, 8
-täienda funktsiooni nii, et saab muuta genereeritud arvude sammupikkuse. Näiteks 2 kuni 8 ja samm 3, tekitavad 2, 5, 8
-Ristküliku pindala
-koosta funktsioon, mis leiab kasutaja antud arvudega ristkülikupindala
-Isikukood
-koosta funktsioon, mis leiab, kas sisestatud isikukood on õige pikkusega
-täienda funktsiooni, et kui isikukood on kirjas leitakse sugu ja sünniaeg
-Head mõtted
-koosta funktsioon, mis hoiab endas kolme ühepikkust massiivi: alus, öeldis ja sihitis
-koosta kood, mis lehele laadimisel valib suvaliselt igast massiivist elemendi ja koostab lause -->
-
+<!-- Tehvan Marjapuu php07
+ IT-23 -->
 
 <!DOCTYPE html>
 <html lang="et">
