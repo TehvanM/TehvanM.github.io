@@ -1,0 +1,148 @@
+-- ülesanne 12
+CREATE TABLE kasutajad(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	first_name TEXT NOT NULL,
+	last_name TEXT NOT NULL,
+	email TEXT NOT NULL,
+	telefon TEXT NOT NULL
+);
+
+ALTER TABLE kasutajad RENAME TO users;
+ALTER TABLE users RENAME COLUMN telefon TO phone;
+
+ALTER TABLE users ADD COLUMN image TEXT;
+
+.schema users
+-- ülesanne 13
+
+INSERT INTO users (first_name, last_name, email, phone, image)
+VALUES ('Tehvan', 'Marjapuu', 'Tehvan.marjapuu@gmail.com', '555444666', 'tehvan.jpg'),
+('Mario', 'Methhein', 'Mario.methhein@hotmail.ee', '3808969425', 'mario.jpg');
+
+.read users.sql
+
+SELECT * FROM users LIMIT 10;
+
+-- ülesanne 14
+
+SELECT * FROM users ORDER BY last_name LIMIT 3;
+
+SELECT * FROM users
+WHERE first_name LIKE 'G%' AND email LIKE '%.com'
+ORDER BY email DESC;
+
+
+SELECT id, first_name, last_name, phone,
+	CASE
+	WHEN phone LIKE '372%' THEN 'EESTI'
+	ELSE 'VÄLISMAA'
+	END AS telefonitüüp
+FROM users;
+
+
+SELECT first_name, last_name, email, phone,
+	CASE
+	WHEN email LIKE '%.edu' OR email LIKE '%.gov' THEN 'HARIDUSASUTUS'
+	ELSE 'ERAFIRMA'
+	END AS email_kuuluvus
+FROM users
+WHERE phone LIKE '372%'
+ORDER BY last_name
+LIMIT 1;
+
+-- ülesanne 15
+
+UPDATE users
+SET email = 'TehvanON.äge@muidugion.com', phone = '123456'
+WHERE first_name = 'Tehvan';
+
+DELETE FROM users WHERE id BETWEEN 5 AND 10;
+
+
+SELECT * FROM users LIMIT 10;
+
+-- ülesanne 16
+
+
+CREATE TABLE rooms(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	toa_number TEXT,
+	toa_tyyp TEXT,
+	toa_hind INTEGER,
+	toa_saadavus TEXT
+);
+
+CREATE TABLE bookings(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	users_id INTEGER,
+	rooms_id INTEGER,
+	saabumine TEXT,
+	lahkumine TEXT,
+	FOREIGN KEY (users_id) REFERENCES users(id),
+	FOREIGN KEY (rooms_id) REFERENCES rooms(id)
+);
+
+CREATE TABLE payments(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	bookings_id INTEGER,
+	arve_summa INTEGER,
+	tasumis_paev TEXT,
+	makseviis TEXT,
+	FOREIGN KEY (bookings_id) REFERENCES bookings(id)
+);
+
+-- Genereeri andmed mockaroo.com-ist ja impordi need.
+
+.read rooms.sql
+.read bookings.sql
+.read payments.sql
+
+
+-- Kasutajad ja toad
+SELECT users.first_name, users.last_name, rooms.toa_number
+FROM bookings
+JOIN users ON users.id = bookings.users_id
+JOIN rooms ON rooms.id = bookings.rooms_id;
+
+-- Makseinfo
+SELECT payments.arve_summa, payments.tasumis_paev
+FROM bookings
+JOIN payments ON bookings.id = payments.bookings_id;
+
+-- Kõik koos
+SELECT users.first_name, users.last_name, rooms.toa_tyyp, payments.arve_summa
+FROM bookings
+JOIN users ON users.id = bookings.users_id
+JOIN rooms ON rooms.id = bookings.rooms_id
+JOIN payments ON payments.bookings_id = bookings.id;
+
+-- ülesanne 17
+
+
+SELECT users.first_name, users.last_name, COUNT(bookings.id) as broneeringud
+FROM bookings
+JOIN users ON users.id = bookings.users_id
+GROUP BY users_id
+HAVING COUNT(bookings.id) > 1;
+
+
+SELECT users.first_name, users.last_name, COUNT(bookings.id) AS broneeringud, SUM(payments.arve_summa) AS makstud
+FROM bookings
+JOIN users ON users.id = bookings.users_id
+JOIN payments ON bookings.id = payments.bookings_id
+GROUP BY users.id;
+
+
+SELECT * FROM (
+	SELECT users_id, COUNT(*) AS kogus
+	FROM bookings
+	GROUP BY users_id
+) AS alampäring
+WHERE kogus = (
+	SELECT MAX(kogus)
+	FROM (
+		SELECT users_id, COUNT(*) AS kogus
+		FROM bookings
+		GROUP BY users_id
+	)
+);
