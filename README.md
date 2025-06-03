@@ -1,3 +1,3 @@
 # TehvanM.github.io
 
-Tere maailm
+Tere maailma ilusaim inimene
