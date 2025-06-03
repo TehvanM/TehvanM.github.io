@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jumbotron ja Cards</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://kit.fontawesome.com/YOUR_FA_KIT.js" crossorigin="anonymous"></script>
+<style>
+    .card-img-top {
+        width: 100%;
+        height: 25vw;
+        object-fit: cover;
+    }
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand text-light" href="#"><i class="bi bi-twitter fa-2x text-light"></i> Mar&puu</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active text-light" aria-current="page" href="#">Avaleht</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Epood</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Kassa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Kontakt</a>
+                </li>
+            </ul>
+            <button class="btn btn-outline-success bg-success text-light" type="submit"><i class="bi bi-person-circle text-light"></i> Logi sisse</button>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="p-5 mb-4 bg-body-tertiary jumbo" style="background-image: url('must.jpg'); background-size: cover; background-position: center;">
+        <div class="container-fluid py-5 text-center text-white">
+            <h1 class="display-3 fw-bold text-white">Jumbotron</h1>
+            <p class="col-md-8 mx-auto fs-8 text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.</p>
+
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+
+            <!-- Kaart 1 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="tänav.jpg" class="card-img-top" alt="Pilt 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Magna dolore ut <span class="badge bg-primary">Lorem</span> <span class="badge bg-secondary">Ipsum</span></h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fermentum tortor urna, sed volutpat nisi tincidunt feugiat. In scelerisque nisi lorem, in tempor eros rutrum ac. Phasellus quam magna, tempor vel interdum non, commodo quis libero. Proin urna massa, posuere vel rhoncus sed, cursus sed orci. Integer quis sollicitudin odio, a molestie est. Proin ultricies metus non nisl hendrerit feugiat. Phasellus non dapibus magna. Quisque et dolor tellus. Nulla venenatis nec libero feugiat venenatis. Fusce faucibus, dui a facilisis lobortis, orci leo sagittis mauris, vel auctor justo massa vel ante. In vestibulum lectus nulla, in bibendum eros tempor vel. Curabitur a pellentesque ante. Cras ac ultrices nunc. Aliquam in iaculis augue.</p>
+                        <div class="d-flex justify-content-start">
+                            <h5 class="bi bi-twitter">Twitter</h5>
+                            <h5 class="bi bi-facebook">Facebook</h5>
+                            <h5 class="bi bi-instagram">Instagram</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kaart 2 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="tänav.jpg" class="card-img-top" alt="Pilt 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Sit ame Minim <span class="badge bg-danger">Minim</span> <span class="badge bg-dark">Ipsum</span></h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fermentum tortor urna, sed volutpat nisi tincidunt feugiat. In scelerisque nisi lorem, in tempor eros rutrum ac. Phasellus quam magna, tempor vel interdum non, commodo quis libero. Proin urna massa, posuere vel rhoncus sed, cursus sed orci. Integer quis sollicitudin odio, a molestie est. Proin ultricies metus non nisl hendrerit feugiat. Phasellus non dapibus magna. Quisque et dolor tellus. Nulla venenatis nec libero feugiat venenatis. Fusce faucibus, dui a facilisis lobortis, orci leo sagittis mauris, vel auctor justo massa vel ante. In vestibulum lectus nulla, in bibendum eros tempor vel. Curabitur a pellentesque ante. Cras ac ultrices nunc. Aliquam in iaculis augue.</p>
+                        <div class="d-flex justify-content-start">
+                            <h5 class="bi bi-twitter">Twitter</h5>
+                            <h5 class="bi bi-facebook">Facebook</h5>
+                            <h5 class="bi bi-instagram">Instagram</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kaart 3 (YouTube video) -->
+            <div class="col-md-4">
+                <div class="card">
+                    <iframe class="card-img-top" src="https://www.youtube.com/embed/L9O8ivzHUkE" allowfullscreen></iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">Nostrud aliquip ex <span class="badge bg-info">Info</span></h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fermentum tortor urna, sed volutpat nisi tincidunt feugiat. In scelerisque nisi lorem, in tempor eros rutrum ac. Phasellus quam magna, tempor vel interdum non, commodo quis libero. Proin urna massa, posuere vel rhoncus sed, cursus sed orci. Integer quis sollicitudin odio, a molestie est. Proin ultricies metus non nisl hendrerit feugiat. Phasellus non dapibus magna. Quisque et dolor tellus. Nulla venenatis nec libero feugiat venenatis. Fusce faucibus, dui a facilisis lobortis, orci leo sagittis mauris, vel auctor justo massa vel ante. In vestibulum lectus nulla, in bibendum eros tempor vel. Curabitur a pellentesque ante. Cras ac ultrices nunc. Aliquam in iaculis augue.</p>
+                        <div class="d-flex justify-content-start">
+                            <h5 class="bi bi-twitter">Twitter</h5>
+                            <h5 class="bi bi-facebook">Facebook</h5>
+                            <h5 class="bi bi-instagram">Instagram</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
