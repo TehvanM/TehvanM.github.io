@@ -22,7 +22,7 @@ def load_data_from_db(tree, search_query=""):
         tree.delete(item)
 
     # Loo ühendus SQLite andmebaasiga
-    conn = sqlite3.connect('.\kplaas.db')
+    conn = sqlite3.connect('.\tmarjapuu.db')
     cursor = conn.cursor()
 
     # Tee päring andmebaasist andmete toomiseks, koos ID-ga, kuid ID ei kuvata
@@ -125,7 +125,7 @@ def on_delete():
         if confirm:
             try:
                 # Loo andmebaasi ühendus
-                conn = sqlite3.connect('.\kplaas.db')
+                conn = sqlite3.connect('.\tmarjapuu.db')
                 cursor = conn.cursor()
                
                 # Kustuta kirje

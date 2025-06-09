@@ -67,7 +67,7 @@ Harjutus 9  -->
                 </form> 
 
                 <?php
-                    echo "<p> tropp, idioot, lollpea</p>";
+                    echo "<p> loll, tropp, tainaaju</p>";
 
                     if (!empty($_GET["laused"])) {
                         $kontroll = $_GET["laused"];
@@ -79,7 +79,7 @@ Harjutus 9  -->
 
                 <br>
 
-                <h2>Nimi ja Email</h2>
+                <h2>Nimi aj Email</h2>
 
                 <form method="get">
                     <div class="mb-3">
@@ -96,7 +96,7 @@ Harjutus 9  -->
                         $otsi = array("ä", "ö", "ü", "õ");
                         $asenda = array("a", "o", "y", "o");
                         $nimi2 = str_replace($otsi, $asenda, $nimi2);
-                        $email = $nimi2 . "@hkhk.edu.ee";
+                        $email = $nimi2 . "@hkhk.ee";
                         echo "<p>Email: $email</p>";
                     }
                 ?>

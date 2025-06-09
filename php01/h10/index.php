@@ -23,14 +23,15 @@ Harjutus 10 -->
 </head>
 <body>
 
-<menu>
-    <a href="index.php">Avaleht</a> |
-    <a href="index.php?leht=portfoolio">Portfoolio</a> |
-    <a href="index.php?leht=kaart">Kaart</a> |
-    <a href="index.php?leht=kontakt">Kontakt</a> |
-	<a href="index.php?leht=kontroll">Kontroll</a>
-
-</menu>
+<nav>
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex;">
+        <li style="margin-right: 15px;"><a href="index.php">Avaleht</a></li>
+        <li style="margin-right: 15px;"><a href="index.php?leht=portfoolio">Portfoolio</a></li>
+        <li style="margin-right: 15px;"><a href="index.php?leht=kaart">Kaart</a></li>
+        <li style="margin-right: 15px;"><a href="index.php?leht=kontakt">Kontakt</a></li>
+        <li><a href="index.php?leht=kontroll">Kontroll</a></li>
+    </ul>
+</nav>
 
 <?php
 $lubatudLehed = ['portfoolio', 'kaart', 'kontakt', ];
@@ -38,16 +39,13 @@ $lubatudLehed = ['portfoolio', 'kaart', 'kontakt', ];
 if (!empty($_GET['leht'])) {
     $leht = htmlspecialchars($_GET['leht']);
     
-    if (in_array($leht, $lubatudLehed)) {
-        $fail = $leht . '.php';
-        
-        if (file_exists($fail)) {
-            include $fail;
-        } else {
-            echo "<p>Viga: Faili '$fail' ei leitud.</p>";
-        }
+    $fail = "{$leht}.php";
+    $fail = $leht . '.php';
+    
+    if (file_exists($fail)) {
+        include $fail;
     } else {
-        echo "<p>Valitud lehte ei eksisteeri!</p>";
+        echo "<p>Viga: Faili '$fail' ei leitud.</p>";
     }
 } else {
     ?>

@@ -27,7 +27,7 @@ Harjutus 8 -->
                 <form>
                     <div class="mb-3">
                         <label for="vanus" class="form-label">Sisesta oma sünniaasta</label>
-                        <input type="number" class="form-control" name="vanus">
+                        <input type="number" class="form-control" name="vanus" id="vanus">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

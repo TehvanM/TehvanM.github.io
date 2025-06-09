@@ -21,16 +21,13 @@ $mytask = (isset($_GET['task'])) ? $_GET['task'] : '';
         if ($mytask === "jagamine" && isset($_GET['num1']) && isset($_GET['num2'])) {
             $x = $_GET['num1'] + 0;
             $y = $_GET['num2'] + 0;
-
             echo "<h2>Jagame midagi</h2>";
             if (!$y) {
                 echo '<div class="alert alert-danger">Nulliga mäng ei sobi!</div>';
             } else {
                 $answer = $x / $y;
                 echo "<div class='alert alert-success'>$x jagatud $y tulemuseks on $answer</div>";
-
             }
-
         } elseif ($mytask == "vanus" && $_GET['age1'] != '' && $_GET['age2'] != '') {
             $v1 = $_GET['age1'] * 1;
             $v2 = $_GET['age2'] * 1;
@@ -38,9 +35,6 @@ $mytask = (isset($_GET['task'])) ? $_GET['task'] : '';
             echo '<div class="alert alert-info">';
             echo ($v1 > $v2) ? "Esimene on vanem" : (($v2 > $v1) ? "Teine on vanem" : "Võrdne vanus");
             echo '</div>';
-
-
-
         } elseif ($mytask === "ristkylik1" && @$_GET['side1'] && @$_GET['side2']) {
             $s1 = (float)$_GET['side1'];
             $s2 = (float)$_GET['side2'];
@@ -94,8 +88,6 @@ $mytask = (isset($_GET['task'])) ? $_GET['task'] : '';
         <button class="btn btn-primary">Arvuta</button>
     </form>
 
-    
-    
     <h3>Vanuse võrdlus</h3>
     <form method="get" class="mb-4">
         <input type="number" name="age1" required placeholder="Vanus 1" class="form-control mb-2">
@@ -104,7 +96,6 @@ $mytask = (isset($_GET['task'])) ? $_GET['task'] : '';
         <button class="btn btn-primary">Võrdle</button>
     </form>
 
-    
     <h3>Kujundi määramine I</h3>
     <form method="get" class="mb-4">
         <input type="number" name="side1" step="0.1" required placeholder="Külg 1" class="form-control mb-2">
@@ -113,7 +104,6 @@ $mytask = (isset($_GET['task'])) ? $_GET['task'] : '';
         <button class="btn btn-primary">Kontrolli</button>
     </form>
 
-    
     <h3>Kujundi määramine II</h3>
     <form method="get" class="mb-4">
         <input type="number" name="length" step="0.1" required placeholder="Pikkus" class="form-control mb-2">

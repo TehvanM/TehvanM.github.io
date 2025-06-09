@@ -28,7 +28,7 @@ Harjutus 7 -->
                 echo "<h2>Liitu uudiskirjaga</h2>";
 
                 function uudiskiri(){
-                    return '<form action="" method="post">
+                    return '<form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '" method="post">
                         <div class="mb-3">
                             <label class="form-label">Email</label>
                             <input type="email" class="form-control">
@@ -42,7 +42,7 @@ Harjutus 7 -->
                 ?>
 
                 <h2>Kasutajanimi ja email</h2>
-                <form action="" method="get">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="get">
                     <div class="mb-3">
                         <label class="form-label">Sisesta kasutajanimi</label>
                         <input type="text" class="form-control" name="kasutaja">
@@ -66,7 +66,7 @@ Harjutus 7 -->
                 ?>
 
                 <h2>Arvud</h2>
-                <form action="" method="get">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="get">
                     <div class="mb-3">
                         <label class="form-label">sisesta esimene arv</label>
                         <input type="number" class="form-control" name="arv1">
@@ -98,7 +98,7 @@ Harjutus 7 -->
                 ?>
 
                 <h2>Ristküliku pindala</h2>
-                <form action="" method="get">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="get">
                     <div class="mb-3">
                         <label class="form-label">Sisesta külg A</label>
                         <input type="number" class="form-control" name="a">
@@ -124,7 +124,7 @@ Harjutus 7 -->
                 ?>
 
                 <h2>Isikukood</h2>
-                <form action="" method="get">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="get">
                     <div class="mb-3">
                         <label class="form-label">Sisesta isikukood</label>
                         <input type="number" class="form-control" name="isikukood">
@@ -137,11 +137,7 @@ Harjutus 7 -->
                     $isikukood = strval($isikukood);
                     if(strlen($isikukood) == 11){
                         $sugu = substr($isikukood, 0, 1); 
-                        if($sugu % 2 == 0){
-                            $sugu = "Naine";
-                        } else {
-                            $sugu = "Mees";
-                        }
+                        $sugu = ($sugu % 2 == 0) ? "Naine" : "Mees";
                         $sunniaeg = substr($isikukood, 1, 2) . "." . substr($isikukood, 3, 2) . "." . substr($isikukood, 5, 2);
                         return "Sugu: $sugu <br> Sünniaeg: $sunniaeg";
                     } else {
@@ -157,15 +153,13 @@ Harjutus 7 -->
                 <h2>Head mõtted</h2>
                 <?php
                 function motted(){
-                    
-                    $alus = array("Täna", "Homme", "Ülehomme", "Eile", "Üleeile");
-                    $oeldis = array("on", "ei taha", "ei tule", "ei saa olla");
-                    $sihitis = array("päikest", "vihma", "lund", "raha", "õnne");
-
+                    $alus = ["Täna", "Homme", "Ülehomme", "Eile", "Üleeile"];
+                    $oeldis = ["on", "ei taha", "ei tule", "ei saa olla"];
+                    $sihitis = ["päikest", "vihma", "lund", "raha", "õnne"];
                     $sona1 = $alus[array_rand($alus)];
                     $sona2 = $oeldis[array_rand($oeldis)];
                     $sona3 = $sihitis[array_rand($sihitis)];
-                    return "$sona1 $sona2 $sona3";
+                    return "$sona1 $sona2 $sona3.";
                 }
                 echo motted();
                 ?>

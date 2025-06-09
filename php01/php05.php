@@ -87,7 +87,7 @@ Harjutus 5 -->
         <button type="submit" class="btn btn-primary">Eemalda firma</button>
     </form>
     <?php
-        $firmad = array("microsoft","apple","samsung","audi","bmw","Nvidia","Gigashots","Tagchat","Snapchat","Dell","Twitch","Edgepulse","Eidel","Mar&puu","Jaloo","Oyope","Jamia");
+        $firmad = array("Kimia","Mynte","Voomm","Twiyo","Layo","Talane","Gigashots","Tagchat","Quaxo","Voonyx","Kwilith","Edgepulse","Eidel","Eadel","Jaloo","Oyope","Jamia");
 
         if(isset($_GET["eemaldafirma"])){
             $midagi = $_GET["eemaldafirma"];
