@@ -11,7 +11,7 @@ Harjutus 13 - Muudetud -->
 </head>
 <body>
     <div class="container">
-        <h1>harjutus 13</h1>
+        <h1>Harjutus 13</h1>
         <div class="row">
             <div class="col-md-4">
 
