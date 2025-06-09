@@ -26,29 +26,29 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
-                    <a class="navbar-brand p-2 text-white fw-bold" href="#">Mar&puu.ee</a>
+                    <a class="navbar-brand p-2 text-black fw-bold" href="#">Mar&puu.ee</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="index.php">Avaleht</a>
+                                <a class="nav-link text-black" href="index.php">Avaleht</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="index.php?leht=tooted">Tooted</a>
+                                <a class="nav-link text-black" href="index.php?leht=tooted">Tooted</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="index.php?leht=kontakt">Kontakt</a>
+                                <a class="nav-link text-black" href="index.php?leht=kontakt">Kontakt</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="admin.php">Admin</a>
+                                <a class="nav-link text-black" href="admin.php">Admin</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="index.php?leht=test">Test leht</a>
+                                <a class="nav-link text-black" href="index.php?leht=test">Test leht</a>
                             </li>
                             <li class="nav-item text-center mt-2">
-                                <i class="bi bi-cart text-white fs-4"></i>
+                                <i class="bi bi-cart text-black fs-4"></i>
                             </li>
                         </ul>
                     </div>
@@ -66,16 +66,16 @@
                 "https://images.pexels.com/photos/6347919/pexels-photo-6347919.jpeg"
             ];
             $reklaam_tekstid = [
-                "SUUR ALE<br>kuni -50% kõigele!",
-                "TAGASI KOOLI<br>-40% kooliasjadele!",
-                "SÜGISE PAKKUMINE<br>-35% kõik tooted!"
+                "SUUR ALE<br><span class='text-black'>kuni -50% kõigele!</span>",
+                "TAGASI KOOLI<br><span class='text-black'>-40% kooliasjadele!</span>",
+                "SÜGISE PAKKUMINE<br><span class='text-black'>-35% kõik tooted!</span>"
             ];
 
             $valitud_pilt = $reklaam_pildid[array_rand($reklaam_pildid)];
             $valitud_tekst = $reklaam_tekstid[array_rand($reklaam_tekstid)];
             ?>
 
-            <div class="row justify-content-center align-items-center text-white">
+            <div class="row justify-content-center align-items-center text-black">
                 <div class="col-sm-8">
                     <h1 class="display-4"><?php echo $valitud_tekst; ?></h1>
                     <p class="lead">Avasta meie fantastilisi pakkumisi ja leia oma lemmiktooted soodsate hindadega!</p>
