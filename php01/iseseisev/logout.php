@@ -1,3 +1,6 @@
+<!-- Tehvan Marjapuu iseseisev -->
+
+
 <?php
 session_start();
 session_destroy();
