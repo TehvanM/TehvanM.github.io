@@ -18,10 +18,9 @@ Harjutus 6 -->
                 <?php
 
                 echo "<h2>genereeri</h2>";
-
                 $number = 1;
                 do{
-                    echo $number.' '; 
+                    echo $number.'   '; 
                     $number++;	
                 } while($number <=100);
 
@@ -32,7 +31,6 @@ Harjutus 6 -->
                     echo $arv.'<br>'; 
                     $arv++;	
                 }
-
                 echo "<br>";
 
                 $arv1 = 1;
@@ -40,31 +38,22 @@ Harjutus 6 -->
                     echo "$arv1. "; 
                     $arv1++;	
                 }
-
                 echo "<br>";
                 echo "<br>";
-
                 echo "<h2>Rida</h2>";
-
 
                 for($pikkus=1; $pikkus<=10; $pikkus++){ 
                     echo '*';
                 }
-
                 echo "<br>";
                 echo "<br>";
-
                 echo "<h2>Rida 2</h2>";
-
-
                 for($pikkus=1; $pikkus<=10; $pikkus++){ 
                     echo '*<br>';
                 }
 
                 echo "<br>";
-
                 echo "<h2>Ruut</h2>";
-
                 for($rida=1; $rida<=5; $rida++){ 
                     for($veerg=1; $veerg<=5; $veerg++){ 
                             echo '* ';	
@@ -72,9 +61,7 @@ Harjutus 6 -->
                     echo '<br>';
                 }
                 echo "<br>";
-
                 echo "<h2>kahanev</h2>";
-
                 $kahanev = 10;
                 while($kahanev >=1){
                     echo $kahanev.'<br>'; 
@@ -82,9 +69,7 @@ Harjutus 6 -->
                 }
                 
                 echo "<br>";
-
                 echo "<h2>Kolmega jagunevad</h2>";
-
                 $number = 1;
                 do{
                     if($number % 3 == 0){
@@ -96,9 +81,7 @@ Harjutus 6 -->
                 echo "<br>";
 
                 echo "<h2>Kolmega jagunevad 2</h2>";
-
                 $naised = array('Mario', 'Rain', 'väike altmäe');
-
                 $mehed = array('ingrid', 'leelo', 'maksi seksikam');
 
                 for($kogus=0; $kogus<count($naised); $kogus++){

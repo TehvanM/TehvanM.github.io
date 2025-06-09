@@ -157,9 +157,11 @@ Harjutus 7 -->
                 <h2>Head mõtted</h2>
                 <?php
                 function motted(){
+                    
                     $alus = array("Täna", "Homme", "Ülehomme", "Eile", "Üleeile");
                     $oeldis = array("on", "ei taha", "ei tule", "ei saa olla");
                     $sihitis = array("päikest", "vihma", "lund", "raha", "õnne");
+
                     $sona1 = $alus[array_rand($alus)];
                     $sona2 = $oeldis[array_rand($oeldis)];
                     $sona3 = $sihitis[array_rand($sihitis)];
