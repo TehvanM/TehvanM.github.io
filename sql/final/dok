@@ -128,11 +128,20 @@ INNER JOIN payments ON bookings.id = payments.id;
 
 
 
-select users.eesnimi, users.perenimi, rooms.toa_tyyp, rooms.toa_hind, bookings.saabumine, bookings.lahkumine, payments.arve_summa, payments.tasumis_paev, payments.makseviis
+SELECT 
+    users.eesnimi, 
+    users.perenimi, 
+    rooms.toa_tyyp, 
+    rooms.toa_hind, 
+    bookings.saabumine, 
+    bookings.lahkumine, 
+    payments.arve_summa, 
+    payments.tasumis_paev, 
+    payments.makseviis
 FROM bookings
 INNER JOIN users ON bookings.users_id = users.id
 INNER JOIN rooms ON bookings.rooms_id = rooms.id
-INNER JOIN payments ON bookings.users_id = payments.id; 
+INNER JOIN payments ON payments.bookings_id = bookings.id;
 
 
 -- ülesanne 17

@@ -1,5 +1,3 @@
-insert into users (first_name, last_name, email, phone, image) values ('Tehvan', 'Marjapuu', 'TehvanON.äge@muidugion.com', '123456789', 'tehvan.jpg');
-insert into users (first_name, last_name, email, phone, image) values ('Mario', 'Methhein', 'Mario.methhein@hotmail.ee', '3728969425', 'mario.jpg');
 insert into users (first_name, last_name, email, phone, image) values ('Janette', 'Streat', 'jstreat2@omniture.com', '1481648143', 'sarah.jpg');
 insert into users (first_name, last_name, email, phone, image) values ('Milty', 'Jolland', 'mjolland3@symantec.com', '7758235806', 'michael.jpg');
 insert into users (first_name, last_name, email, phone, image) values ('Gabriell', 'Winborn', 'gwinborn4@cisco.com', '4077908074', 'john.jpg');
