@@ -1,200 +1,130 @@
-<?php
-// Kui vormi andmed on saadetud, käivitatakse vastav ülesande kood.
-// Kontrollime, kas GET parameeter 'task' on määratud.
-if (isset($_GET['task'])) {
-    $task = $_GET['task'];
-}
+<!-- Tehvan marjapuu harjutus 4 -->
+
+
+<?php  
+$mytask = (isset($_GET['task'])) ? $_GET['task'] : '';
+
 ?>
 <!doctype html>
 <html lang="et">
 <head>
     <meta charset="utf-8">
-    <title>Mitme ülesande lahendused</title>
-    <!-- Bootstrap CSS lingi lisamine -->
+    <title>harjutus 4</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container mt-4">
-    <h1 class="mb-4">Mitme ülesande lahendused</h1>
+    <h1 class="mb-4">harjutus 4</h1>
     
     <?php
-    // Jagamine – kahe täisarvu jagamine
-    if (isset($task) && $task == "jagamine" && !empty($_GET['num1']) && !empty($_GET['num2'])) {
-        // Võtame väärtused ja teisendame täisarvudeks
-        $num1 = intval($_GET['num1']);
-        $num2 = intval($_GET['num2']);
-        echo '<h2>Jagamine</h2>';
-        // Kontroll, et ei jagataks nulliga
-        if ($num2 == 0) {
-            echo '<div class="alert alert-danger">Häire: Jagamine nulliga ei ole lubatud!</div>';
-        } else {
-            $result = $num1 / $num2;
-            echo '<div class="alert alert-success">' . $num1 . ' jagatud ' . $num2 . ' annab tulemuseks ' . $result . '.</div>';
-        }
-    }
-    
-    // Vanus – kahe inimese vanuse võrdlus
-    if (isset($task) && $task == "vanus" && !empty($_GET['age1']) && !empty($_GET['age2'])) {
-        $age1 = intval($_GET['age1']);
-        $age2 = intval($_GET['age2']);
-        echo '<h2>Vanuse võrdlus</h2>';
-        if ($age1 > $age2) {
-            echo '<div class="alert alert-info">Esimene isik on vanem.</div>';
-        } elseif ($age2 > $age1) {
-            echo '<div class="alert alert-info">Teine isik on vanem.</div>';
-        } else {
-            echo '<div class="alert alert-info">Mõlemad on ühevanused.</div>';
-        }
-    }
-    
-    // Ristkülik või ruut – esimene variant
-    if (isset($task) && $task == "ristkylik1" && !empty($_GET['side1']) && !empty($_GET['side2'])) {
-        $side1 = floatval($_GET['side1']);
-        $side2 = floatval($_GET['side2']);
-        echo '<h2>Ristkülik või ruut</h2>';
-        if ($side1 == $side2) {
-            echo '<div class="alert alert-success">Antud mõõtudega on võimalik ruut.</div>';
-        } else {
-            echo '<div class="alert alert-success">Antud mõõtudega on võimalik ristkülik.</div>';
-        }
-    }
-    
-    // Ristkülik või ruut II – teine variant
-    if (isset($task) && $task == "ristkylik2" && !empty($_GET['length']) && !empty($_GET['width'])) {
-        $length = floatval($_GET['length']);
-        $width = floatval($_GET['width']);
-        echo '<h2>Ristkülik või ruut II</h2>';
-        if ($length == $width) {
-            echo '<div class="alert alert-success">Sisestatud mõõtudest järeldub, et tegemist on ruuduga.</div>';
-        } else {
-            echo '<div class="alert alert-success">Sisestatud mõõtudest järeldub, et tegemist on ristkülikuga.</div>';
-        }
-    }
-    
-    // Juubel – sünniaasta põhjal juubeliaasta kontroll
-    if (isset($task) && $task == "juubel" && !empty($_GET['birthyear'])) {
-        $birthyear = intval($_GET['birthyear']);
-        $currentYear = date("Y");
-        $age = $currentYear - $birthyear;
-        echo '<h2>Juubel</h2>';
-        // Määrame juubeliaasta kui vanus on jagatav 5-ga (näiteks 25, 30, 35 jne)
-        if ($age % 5 == 0) {
-            echo '<div class="alert alert-success">Palju õnne! Teil on juubeliaasta: ' . $age . ' aastat!</div>';
-        } else {
-            echo '<div class="alert alert-warning">See ei ole juubeliaasta. Teie vanus on ' . $age . ' aastat.</div>';
-        }
-    }
-    
-    // Hinne – KT punktide alusel hinnangu andmine kasutades switch-lauset
-    if (isset($task) && $task == "hinne" && !empty($_GET['points'])) {
-        $points = intval($_GET['points']);
-        echo '<h2>Hinne</h2>';
-        switch (true) {
-            case ($points > 10):
-                echo '<div class="alert alert-success">SUPER!</div>';
-                break;
-            case ($points >= 5 && $points <= 9):
-                echo '<div class="alert alert-info">TEHTUD!</div>';
-                break;
-            case ($points < 5):
-                echo '<div class="alert alert-danger">KASIN!</div>';
-                break;
-            default:
-                echo '<div class="alert alert-warning">SISESTA OMA PUNKTID!</div>';
+    if (!empty($mytask)) {
+        if ($mytask === "jagamine" && isset($_GET['num1']) && isset($_GET['num2'])) {
+            $x = $_GET['num1'] + 0;
+            $y = $_GET['num2'] + 0;
+            echo "<h2>Jagame midagi</h2>";
+            if (!$y) {
+                echo '<div class="alert alert-danger">Nulliga mäng ei sobi!</div>';
+            } else {
+                $answer = $x / $y;
+                echo "<div class='alert alert-success'>$x jagatud $y tulemuseks on $answer</div>";
+            }
+        } elseif ($mytask == "vanus" && $_GET['age1'] != '' && $_GET['age2'] != '') {
+            $v1 = $_GET['age1'] * 1;
+            $v2 = $_GET['age2'] * 1;
+            echo "<h2>Vanuse arvestus</h2>";
+            echo '<div class="alert alert-info">';
+            echo ($v1 > $v2) ? "Esimene on vanem" : (($v2 > $v1) ? "Teine on vanem" : "Võrdne vanus");
+            echo '</div>';
+        } elseif ($mytask === "ristkylik1" && @$_GET['side1'] && @$_GET['side2']) {
+            $s1 = (float)$_GET['side1'];
+            $s2 = (float)$_GET['side2'];
+            echo "<h2>Kujundi määramine I</h2>";
+            echo '<div class="alert alert-success">' . (($s1 === $s2) ? "See on ruut" : "See on ristkülik") . '</div>';
+        } elseif ($mytask === "ristkylik2" && isset($_GET['length']) && isset($_GET['width'])) {
+            $p = floatval($_GET['length']);
+            $l = floatval($_GET['width']);
+            echo "<h2>Kujundi määramine II</h2>";
+            if ($p == $l) {
+                echo '<div class="alert alert-success">Jälle ruut!</div>';
+            } else {
+                echo '<div class="alert alert-success">Seekord on ristkülik!</div>';
+            }
+        } elseif ($mytask === "juubel" && !empty($_GET['birthyear'])) {
+            $synd = intval($_GET['birthyear']);
+            $now = date("Y");
+            $vanus = $now - $synd;
+            echo "<h2>Juubel või mitte?</h2>";
+            if ($vanus % 5 == 0) {
+                echo "<div class='alert alert-success'>JUUBEL! $vanus aastat noor!</div>";
+            } else {
+                echo "<div class='alert alert-warning'>Pole juubel. Vaid $vanus aastat.</div>";
+            }
+        } elseif ($mytask === "hinne" && $_GET['points'] !== '') {
+            $punktid = (int)$_GET['points'];
+            echo "<h2>Hindamine käib</h2>";
+            switch (true) {
+                case ($punktid > 10):
+                    echo '<div class="alert alert-success">TIMMIS!</div>';
+                    break;
+                case ($punktid >= 5 && $punktid < 10):
+                    echo '<div class="alert alert-info">Täitsa ok</div>';
+                    break;
+                case ($punktid < 5):
+                    echo '<div class="alert alert-danger">Nõrk</div>';
+                    break;
+                default:
+                    echo '<div class="alert alert-warning">Sisesta midagi!</div>';
+            }
         }
     }
     ?>
     
     <hr>
-    
-    <!-- Jagamine vorm -->
     <h3>Jagamine</h3>
     <form method="get" class="mb-4">
-        <div class="form-group">
-            <label for="num1">Esimene arv:</label>
-            <input type="number" class="form-control" id="num1" name="num1" required>
-        </div>
-        <div class="form-group">
-            <label for="num2">Teine arv:</label>
-            <input type="number" class="form-control" id="num2" name="num2" required>
-        </div>
-        <!-- Peidetud väli ülesande tuvastamiseks -->
+        <input type="number" name="num1" required placeholder="Arv 1" class="form-control mb-2">
+        <input type="number" name="num2" required placeholder="Arv 2" class="form-control mb-2">
         <input type="hidden" name="task" value="jagamine">
-        <button type="submit" class="btn btn-primary">Jagame!</button>
+        <button class="btn btn-primary">Arvuta</button>
     </form>
-    
-    <!-- Vanus vorm -->
+
     <h3>Vanuse võrdlus</h3>
     <form method="get" class="mb-4">
-        <div class="form-group">
-            <label for="age1">Esimene vanus:</label>
-            <input type="number" class="form-control" id="age1" name="age1" required>
-        </div>
-        <div class="form-group">
-            <label for="age2">Teine vanus:</label>
-            <input type="number" class="form-control" id="age2" name="age2" required>
-        </div>
+        <input type="number" name="age1" required placeholder="Vanus 1" class="form-control mb-2">
+        <input type="number" name="age2" required placeholder="Vanus 2" class="form-control mb-2">
         <input type="hidden" name="task" value="vanus">
-        <button type="submit" class="btn btn-primary">Võrdle vanuseid!</button>
+        <button class="btn btn-primary">Võrdle</button>
     </form>
-    
-    <!-- Ristkülik või ruut vorm (esimene variant) -->
-    <h3>Ristkülik või ruut</h3>
+
+    <h3>Kujundi määramine I</h3>
     <form method="get" class="mb-4">
-        <div class="form-group">
-            <label for="side1">Külg 1:</label>
-            <input type="number" step="0.1" class="form-control" id="side1" name="side1" required>
-        </div>
-        <div class="form-group">
-            <label for="side2">Külg 2:</label>
-            <input type="number" step="0.1" class="form-control" id="side2" name="side2" required>
-        </div>
+        <input type="number" name="side1" step="0.1" required placeholder="Külg 1" class="form-control mb-2">
+        <input type="number" name="side2" step="0.1" required placeholder="Külg 2" class="form-control mb-2">
         <input type="hidden" name="task" value="ristkylik1">
-        <button type="submit" class="btn btn-primary">Määratle kujund!</button>
+        <button class="btn btn-primary">Kontrolli</button>
     </form>
-    
-    <!-- Ristkülik või ruut vorm (teine variant) -->
-    <h3>Ristkülik või ruut II</h3>
+
+    <h3>Kujundi määramine II</h3>
     <form method="get" class="mb-4">
-        <div class="form-group">
-            <label for="length">Pikkus:</label>
-            <input type="number" step="0.1" class="form-control" id="length" name="length" required>
-        </div>
-        <div class="form-group">
-            <label for="width">Laius:</label>
-            <input type="number" step="0.1" class="form-control" id="width" name="width" required>
-        </div>
+        <input type="number" name="length" step="0.1" required placeholder="Pikkus" class="form-control mb-2">
+        <input type="number" name="width" step="0.1" required placeholder="Laius" class="form-control mb-2">
         <input type="hidden" name="task" value="ristkylik2">
-        <button type="submit" class="btn btn-primary">Määratle kuju!</button>
+        <button class="btn btn-primary">Kontrolli</button>
     </form>
-    
-    <!-- Juubel vorm -->
+
     <h3>Juubel</h3>
     <form method="get" class="mb-4">
-        <div class="form-group">
-            <label for="birthyear">Sünniaasta:</label>
-            <input type="number" class="form-control" id="birthyear" name="birthyear" required>
-        </div>
+        <input type="number" name="birthyear" required placeholder="Sünniaasta" class="form-control mb-2">
         <input type="hidden" name="task" value="juubel">
-        <button type="submit" class="btn btn-primary">Kontrolli juubelit!</button>
+        <button class="btn btn-primary">Kontrolli juubelit</button>
     </form>
-    
-    <!-- Hinne vorm -->
+
     <h3>Hinne</h3>
     <form method="get" class="mb-4">
-        <div class="form-group">
-            <label for="points">KT punktid:</label>
-            <input type="number" class="form-control" id="points" name="points" required>
-        </div>
+        <input type="number" name="points" required placeholder="Punktid" class="form-control mb-2">
         <input type="hidden" name="task" value="hinne">
-        <button type="submit" class="btn btn-primary">Hangi hinne!</button>
+        <button class="btn btn-primary">Hinda</button>
     </form>
-    
 </div>
-
-<!-- Bootstrap JS ja sõltuvused -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>

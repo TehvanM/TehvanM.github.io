@@ -1,0 +1,19 @@
+Autoremondi tööde haldamise süsteem
+Luua autoremonditöökoja süsteem, mis võimaldab klientidel broneerida aegu teenusteks (nt õlivahetus, diagnostika). Töötajad saavad hallata broneeringuid, lisada uusi teenuseid ja hallata ajakava.
+Reeglid ja kitsendused
+Igal teenusel on kindel kestus ja hind;
+Sama töökoht ei saa teenindada rohkem kui ühte sõidukit korraga;
+Klient saab broneeringut muuta või tühistada kuni 24 tundi enne teenuse aega;
+Töötaja saab vaadata ja muuta kõiki broneeringuid;
+Süsteem ei luba kattuvaid broneeringuid samale tööjaamale.
+Tehnilised ootused
+Klient: ees- ja perekonnanimi, isikukood, e-posti aadress (kontrollitav);
+Teenus: nimi, kirjeldus, kestus, hind;
+Broneering: klient, teenus, kuupäev, kellaaeg, töökoht.
+Ootused tulemile
+Andmebaas klientide, teenuste ja broneeringute salvestamiseks;
+Kasutajaliides teenuste valimiseks ja aja broneerimiseks;
+Graafiline ülevaade ajakavast ja töökohtade hõivatusest;
+Kihiline arhitektuur (andmed, loogika, esituskiht).
+
+

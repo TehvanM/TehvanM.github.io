@@ -1,13 +1,20 @@
 pilt,toode,hind
-pildid/product-1.jpg,särk,50
-pildid/product-2.jpg,pastlad,100
-pildid/product-3.jpg,püksid,120
-pildid/product-4.jpg,särk,19.99
-pildid/product-5.jpg,kell,300
-pildid/product-6.jpg,auto,4000
-pildid/product-7.jpg,jalgratas,150
-pildid/product-8.jpg,komm,3
-pildid/product-9.jpg,pusa,25.99
-pildid/product-10.jpg,telefon,699
-pildid/product-11.jpg,arvuti,1099
-pildid/product-12.jpg,kõvaketas,59.99
+https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg,Sülearvuti,899
+https://images.pexels.com/photos/267394/pexels-photo-267394.jpeg,Nutitelefon,549
+https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg,Kõrvaklapid,129
+https://images.pexels.com/photos/887751/pexels-photo-887751.jpeg,Fotoaparaat,749
+https://images.pexels.com/photos/51383/photo-camera-subject-photographer-51383.jpeg,Objektiiv,399
+pildid/rigs.png,"rigus mortus",1000
+pildid/product-1.jpg,"Toode 1",199
+pildid/product-2.jpg,"Toode 2",299
+pildid/product-3.jpg,"Toode 3",399
+pildid/product-4.jpg,"Toode 4",499
+pildid/product-5.jpg,"Toode 5",599
+pildid/product-6.jpg,"Toode 6",699
+pildid/product-7.jpg,"Toode 7",799
+pildid/product-8.jpg,"Toode 8",899
+pildid/product-9.jpg,"Toode 9",999
+pildid/product-10.jpg,"Toode 10",1099
+pildid/product-11.jpg,"Toode 11",1199
+pildid/product-12.jpg,"Toode 12",1299
+pildid/images.png,123,131

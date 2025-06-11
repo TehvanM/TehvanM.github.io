@@ -17,7 +17,7 @@ ALTER TABLE users ADD COLUMN image TEXT;
 
 INSERT INTO users (first_name, last_name, email, phone, image)
 VALUES ('Tehvan', 'Marjapuu', 'Tehvan.marjapuu@gmail.com', '555444666', 'tehvan.jpg'),
-('Mario', 'Methhein', 'Mario.methhein@hotmail.ee', '3808969425', 'mario.jpg');
+('Mario', 'Methhein', 'Mario.methhein@hotmail.ee', '3728969425', 'mario.jpg');
 
 .read users.sql
 
@@ -64,85 +64,123 @@ SELECT * FROM users LIMIT 10;
 -- ülesanne 16
 
 
-CREATE TABLE rooms(
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	toa_number TEXT,
-	toa_tyyp TEXT,
-	toa_hind INTEGER,
-	toa_saadavus TEXT
+CREATE TABLE users(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+eesnimi TEXT NOT NULL,
+perenimi TEXT NOT NULL,
+email TEXT NOT NULL,
+tel TEXT NOT NULL,
+profiilipilt TEXT NOT NULL
 );
+
+
 
 CREATE TABLE bookings(
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	users_id INTEGER,
-	rooms_id INTEGER,
-	saabumine TEXT,
-	lahkumine TEXT,
-	FOREIGN KEY (users_id) REFERENCES users(id),
-	FOREIGN KEY (rooms_id) REFERENCES rooms(id)
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+users_id INTEGER,
+rooms_id INTEGER,
+saabumine TEXT NOT NULL,
+lahkumine TEXT NOT NULL,
+FOREIGN KEY (users_id) REFERENCES users(id),
+FOREIGN KEY (rooms_id) REFERENCES rooms(id)
 );
+
+
+
+CREATE TABLE rooms(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+toa_number TEXT NOT NULL,
+toa_tyyp TEXT NOT NULL,
+toa_hind INTEGER NOT NULL,
+toa_saadavus TEXT NOT NULL
+);
+
+
 
 CREATE TABLE payments(
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	bookings_id INTEGER,
-	arve_summa INTEGER,
-	tasumis_paev TEXT,
-	makseviis TEXT,
-	FOREIGN KEY (bookings_id) REFERENCES bookings(id)
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+bookings_id INTEGER,
+arve_summa TEXT NOT NULL,
+tasumis_paev TEXT NOT NULL,
+makseviis TEXT NOT NULL,
+FOREIGN KEY (bookings_id) REFERENCES bookings(id)
 );
 
--- Genereeri andmed mockaroo.com-ist ja impordi need.
 
-.read rooms.sql
+
+.read users2.sql
 .read bookings.sql
 .read payments.sql
+.read rooms.sql
 
 
--- Kasutajad ja toad
-SELECT users.first_name, users.last_name, rooms.toa_number
+
+select users.eesnimi, users.perenimi, rooms.toa_number, rooms.toa_tyyp
 FROM bookings
-JOIN users ON users.id = bookings.users_id
-JOIN rooms ON rooms.id = bookings.rooms_id;
+INNER JOIN users ON bookings.users_id = users.id
+INNER JOIN rooms ON bookings.rooms_id= rooms.id;
 
--- Makseinfo
-SELECT payments.arve_summa, payments.tasumis_paev
-FROM bookings
-JOIN payments ON bookings.id = payments.bookings_id;
 
--- Kõik koos
-SELECT users.first_name, users.last_name, rooms.toa_tyyp, payments.arve_summa
+
+select payments.tasumis_paev, payments.arve_summa
 FROM bookings
-JOIN users ON users.id = bookings.users_id
-JOIN rooms ON rooms.id = bookings.rooms_id
-JOIN payments ON payments.bookings_id = bookings.id;
+INNER JOIN payments ON bookings.id = payments.id;
+
+
+
+SELECT 
+    users.eesnimi, 
+    users.perenimi, 
+    rooms.toa_tyyp, 
+    rooms.toa_hind, 
+    bookings.saabumine, 
+    bookings.lahkumine, 
+    payments.arve_summa, 
+    payments.tasumis_paev, 
+    payments.makseviis
+FROM bookings
+INNER JOIN users ON bookings.users_id = users.id
+INNER JOIN rooms ON bookings.rooms_id = rooms.id
+INNER JOIN payments ON payments.bookings_id = bookings.id;
+
 
 -- ülesanne 17
 
 
-SELECT users.first_name, users.last_name, COUNT(bookings.id) as broneeringud
+SELECT count(users_id), users.eesnimi, users.perenimi
 FROM bookings
-JOIN users ON users.id = bookings.users_id
+INNER JOIN users ON bookings.users_id = users.id
 GROUP BY users_id
-HAVING COUNT(bookings.id) > 1;
+HAVING count(users_id) > 2
+;
 
 
-SELECT users.first_name, users.last_name, COUNT(bookings.id) AS broneeringud, SUM(payments.arve_summa) AS makstud
+SELECT COUNT(rooms_id) AS Kordus, SUM(payments.arve_summa) AS Summa, users.eesnimi, users.perenimi
 FROM bookings
-JOIN users ON users.id = bookings.users_id
-JOIN payments ON bookings.id = payments.bookings_id
-GROUP BY users.id;
+INNER JOIN users ON users.id = bookings.users_id
+INNER JOIN payments on payments.id = bookings.id
+GROUP BY users_id
+;
 
 
-SELECT * FROM (
-	SELECT users_id, COUNT(*) AS kogus
+SELECT COUNT(rooms_id) AS kordus, users.eesnimi, users.perenimi
+FROM bookings
+INNER JOIN users ON users.id = bookings.users_id
+GROUP BY users_id
+;
+
+
+SELECT count(users_id)
+FROM bookings
+WHERE users_id IN (
+	SELECT users_id
 	FROM bookings
 	GROUP BY users_id
-) AS alampäring
-WHERE kogus = (
-	SELECT MAX(kogus)
-	FROM (
-		SELECT users_id, COUNT(*) AS kogus
-		FROM bookings
-		GROUP BY users_id
-	)
-);
+	HAVING count(users_id) > 2
+)
+GROUP BY users_id;
+
+
+
+
+
