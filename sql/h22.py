@@ -198,7 +198,6 @@ tree.column("email", width=100)
 tree.column("tel", width=60)
 tree.column("profiilipilt", width=60)
 
-
 load_data_from_db(tree)
 
 

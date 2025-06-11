@@ -7,7 +7,6 @@ import sqlite3
 import subprocess
 from tkinter import messagebox
 
-
 def load_data_from_db(tree, search_query=""):
 
     for item in tree.get_children():
@@ -16,28 +15,21 @@ def load_data_from_db(tree, search_query=""):
     # Loo ühendus andmebaasiga
     conn = sqlite3.connect('h161.db')
     cursor = conn.cursor()
-
-
     if search_query:
         cursor.execute("SELECT id, eesnimi, perenimi, email, tel, profiilipilt FROM users WHERE eesnimi LIKE ?", ('%' + search_query + '%',))
     else:
         cursor.execute("SELECT id, eesnimi, perenimi, email, tel, profiilipilt FROM users")
 
     rows = cursor.fetchall()
-
-
     # Lisa andmed tabelisse
     for row in rows:
         tree.insert("", "end", values=row[1:], iid=row[0])
 
     conn.close()
 
-
-
 def on_search():
     search_query = search_entry.get()
     load_data_from_db(tree, search_query)
-
 
 
 def add_data():
@@ -50,8 +42,6 @@ def on_update():
         open_update_window(record_id)
     else:
         messagebox.showwarning(" vali enne rida!")
-
-
 
 def open_update_window(record_id):
     # Loo uus aken
@@ -79,7 +69,6 @@ def open_update_window(record_id):
     # Salvestamise nupp
     save_button = tk.Button(update_window, text="Salvesta", command=lambda: update_record(record_id, entries, update_window))
     save_button.grid(row=len(labels), column=0, columnspan=2, pady=10)
-
 
 
 def update_record(record_id, entries, window):
@@ -121,10 +110,6 @@ def update_record(record_id, entries, window):
     except sqlite3.Error as error:
         print("ilmus viga:", error)
 
-
-
-
-
 root = tk.Tk()
 root.title("Kasutaja andmete kuvamine")
 
@@ -140,7 +125,6 @@ search_entry.pack(side=tk.LEFT, padx=10)
 
 search_button = tk.Button(search_frame, text="Otsi", command=on_search)
 search_button.pack(side=tk.LEFT)
-
 
 # avab h19.py
 open_button = tk.Button(root, text="Lisa andmeid", command=add_data)

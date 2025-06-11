@@ -36,12 +36,9 @@ def validate_data():
 def insert_data():
     if validate_data():
         try:
-
-
             connection = sqlite3.connect("h161.db")
             cursor = connection.cursor()
             print("yhendus loodud")
-
             cursor.execute("""
                 INSERT INTO users (eesnimi, perenimi, email, tel, profiilipilt)
                 VALUES (?, ?, ?, ?, ?)
@@ -52,8 +49,6 @@ def insert_data():
                 entries["tel"].get(),
                 entries["profiilipilt"].get()
             ))
-
-
         except sqlite3.Error as error:
             print("viga andmebaasiga ühendamisel:", error)
 
@@ -66,12 +61,9 @@ def insert_data():
                 print("yhendus suletud")
                 messagebox.showinfo("Andmed sisestati edukalt!")
 
-
-
 def clear_entries():
     for entry in entries.values():
         entry.delete(0, tk.END)
-
 
 
 root = tk.Tk()

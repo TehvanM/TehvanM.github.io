@@ -22,7 +22,6 @@ def load_data_from_db(tree, search_query=""):
 
         rows = cursor.fetchall()
 
-
         # Lisa andmed 
         for row in rows:
             tree.insert("", "end", values=row)
@@ -30,21 +29,15 @@ def load_data_from_db(tree, search_query=""):
         # Sulge ühendus 
         connection.close()
 
-
-
 def on_search():
     search_query = search_entry.get()
     load_data_from_db(tree, search_query)
 
-
-
 def add_data():
     subprocess.run(["python", "h19.py"])
 
-
 root = tk.Tk()
 root.title(" andmete kuvamine")
-
 
 search_frame = tk.Frame(root)
 search_frame.pack(pady=10)
