@@ -1,92 +1,168 @@
 <?php
-// Andmebaasi seaded
+// Andmebaasi konfiguratsioon
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'autoremontiks');
+define('DB_NAME', 'tmarjapuu');
+define('DB_USER', 'tmarjapuu');
+define('DB_PASS', '9C3l+oxF6vuFhsRl');
 
-// Session käivitamine
-session_start();
+// Rakenduse konfiguratsioon
+define('SITE_NAME', 'AutoRemont - Tööde Haldamise Süsteem');
+define('SITE_URL', 'http://localhost');
+
+// Turvaseaded
+define('SESSION_LIFETIME', 14400); // 4 tundi sekundites
+define('HASH_ALGO', PASSWORD_DEFAULT);
+
+// Ajavööndi seadmine
+date_default_timezone_set('Europe/Tallinn');
 
 // Andmebaasi ühendus
-function getDB() {
-    try {
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $pdo;
-    } catch(PDOException $e) {
-        die("Andmebaasi ühenduse viga: " . $e->getMessage());
+try {
+    $pdo = new PDO(
+        "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
+        DB_USER,
+        DB_PASS,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ]
+    );
+} catch (PDOException $e) {
+    die("Andmebaasi ühenduse viga: " . $e->getMessage());
+}
+
+// Funktsioonid
+
+/**
+ * Kontrollib kasutaja sessiooni
+ * @return array|false Kasutaja andmed või false
+ */
+function kontrolliSessiooni() {
+    global $pdo;
+    
+    if (!isset($_COOKIE['session_id'])) {
+        return false;
+    }
+    
+    $stmt = $pdo->prepare("SELECT s.*, k.eesnimi, k.perekonnanimi, k.email, 'klient' as tyyp 
+                          FROM sessioonid s 
+                          JOIN kliendid k ON s.kasutaja_id = k.id 
+                          WHERE s.id = ? AND s.kasutaja_tyyp = 'klient' AND s.kehtib_kuni > NOW()
+                          UNION
+                          SELECT s.*, t.eesnimi, t.perekonnanimi, t.email, 'toottaja' as tyyp 
+                          FROM sessioonid s 
+                          JOIN toottajad t ON s.kasutaja_id = t.id 
+                          WHERE s.id = ? AND s.kasutaja_tyyp = 'toottaja' AND s.kehtib_kuni > NOW()");
+    
+    $sessionId = $_COOKIE['session_id'];
+    $stmt->execute([$sessionId, $sessionId]);
+    
+    return $stmt->fetch();
+}
+
+/**
+ * Loob uue sessiooni
+ * @param int $kasutajaId Kasutaja ID
+ * @param string $tyyp Kasutaja tüüp (klient/toottaja)
+ */
+function looSessioon($kasutajaId, $tyyp) {
+    global $pdo;
+    
+    $sessionId = bin2hex(random_bytes(32));
+    
+    $stmt = $pdo->prepare("INSERT INTO sessioonid (id, kasutaja_id, kasutaja_tyyp) VALUES (?, ?, ?)");
+    $stmt->execute([$sessionId, $kasutajaId, $tyyp]);
+    
+    // Seadista küpsis 4 tunniks
+    setcookie('session_id', $sessionId, time() + SESSION_LIFETIME, '/', '', false, true);
+}
+
+/**
+ * Hävitab sessiooni
+ */
+function havitaSessioon() {
+    global $pdo;
+    
+    if (isset($_COOKIE['session_id'])) {
+        $stmt = $pdo->prepare("DELETE FROM sessioonid WHERE id = ?");
+        $stmt->execute([$_COOKIE['session_id']]);
+        
+        setcookie('session_id', '', time() - 3600, '/');
     }
 }
 
-// Kasutaja sisselogimise kontroll
-function onSisselogitud() {
-    return isset($_SESSION['kasutaja_id']);
-}
-
-// Kasutaja rolli kontroll
-function onTootaja() {
-    return isset($_SESSION['roll']) && $_SESSION['roll'] === 'tootaja';
-}
-
-// Eesti isikukoodi validaatori
-function valideeruIsikukood($kood) {
-    if (!preg_match('/^\d{11}$/', $kood)) return false;
+/**
+ * Valideerib eesti isikukoodi
+ * @param string $isikukood
+ * @return bool
+ */
+function valideeriIsikukood($isikukood) {
+    if (strlen($isikukood) !== 11 || !ctype_digit($isikukood)) {
+        return false;
+    }
     
+    // Kontrollnumbri arvutamine
     $kaalud1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1];
     $kaalud2 = [3, 4, 5, 6, 7, 8, 9, 1, 2, 3];
     
     $summa = 0;
     for ($i = 0; $i < 10; $i++) {
-        $summa += intval($kood[$i]) * $kaalud1[$i];
+        $summa += intval($isikukood[$i]) * $kaalud1[$i];
     }
     
     $kontroll = $summa % 11;
+    
     if ($kontroll === 10) {
         $summa = 0;
         for ($i = 0; $i < 10; $i++) {
-            $summa += intval($kood[$i]) * $kaalud2[$i];
+            $summa += intval($isikukood[$i]) * $kaalud2[$i];
         }
         $kontroll = $summa % 11;
         if ($kontroll === 10) $kontroll = 0;
     }
     
-    return $kontroll == intval($kood[10]);
+    return $kontroll === intval($isikukood[10]);
 }
 
-// Broneeringu konfliktikontroll
-function kontrolliKonflikti($kuupaev, $kellaaeg, $tookoht, $kestus, $broneering_id = null) {
-    $db = getDB();
-    
-    $lopp_aeg = date('H:i:s', strtotime($kellaaeg . ' + ' . $kestus . ' hours'));
-    
-    $sql = "SELECT COUNT(*) FROM broneeringud b 
-            JOIN teenused t ON b.teenus_id = t.id 
-            WHERE b.kuupaev = ? AND b.tookoht = ? AND b.staatus = 'kinnitatud'
-            AND (
-                (b.kellaaeg <= ? AND DATE_ADD(CONCAT(b.kuupaev, ' ', b.kellaaeg), INTERVAL t.kestus_tunnid HOUR) > ?)
-                OR (? < DATE_ADD(CONCAT(b.kuupaev, ' ', b.kellaaeg), INTERVAL t.kestus_tunnid HOUR) AND ? >= b.kellaaeg)
-            )";
-    
-    $params = [$kuupaev, $tookoht, $kellaaeg, $kuupaev . ' ' . $kellaaeg, $kuupaev . ' ' . $kellaaeg, $kuupaev . ' ' . $lopp_aeg];
-    
-    if ($broneering_id) {
-        $sql .= " AND b.id != ?";
-        $params[] = $broneering_id;
-    }
-    
-    $stmt = $db->prepare($sql);
-    $stmt->execute($params);
-    
-    return $stmt->fetchColumn() > 0;
+/**
+ * Valideerib e-maili aadressi
+ * @param string $email
+ * @return bool
+ */
+function valideeriEmail($email) {
+    return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
 }
 
-// Tühistamise aja kontroll (24h)
-function saabTyhistada($kuupaev, $kellaaeg) {
-    $broneering_aeg = strtotime($kuupaev . ' ' . $kellaaeg);
+/**
+ * Formateerib aja
+ * @param string $aeg
+ * @return string
+ */
+function formateeriAeg($aeg) {
+    return date('H:i', strtotime($aeg));
+}
+
+/**
+ * Formateerib kuupäeva
+ * @param string $kuupaev
+ * @return string
+ */
+function formateeriKuupaev($kuupaev) {
+    return date('d.m.Y', strtotime($kuupaev));
+}
+
+/**
+ * Kontrollib, kas broneering on muudetav (24h reegel)
+ * @param string $kuupaev
+ * @param string $aeg
+ * @return bool
+ */
+function onMuudetav($kuupaev, $aeg) {
+    $broneeringAeg = strtotime($kuupaev . ' ' . $aeg);
     $praegu = time();
-    $erinevus = $broneering_aeg - $praegu;
+    $vahe = $broneeringAeg - $praegu;
     
-    return $erinevus >= (24 * 3600); // 24 tundi sekundites
+    return $vahe > 86400; // 24 tundi = 86400 sekundit
 }
 ?>
