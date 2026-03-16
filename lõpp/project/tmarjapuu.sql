@@ -1,6 +1,3 @@
--- Automotive Workshop Management System Database
--- Estonian Personal ID and email validation included
--- Normalized database structure (3NF)
 
 CREATE DATABASE autoremondi_susteem CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE autoremondi_susteem;

@@ -1,0 +1,303 @@
+### Üksikasjalik SQLite Koodi Selgitus (Lastele mõeldud versioon)
+
+---
+
+## Ülesanne 12
+
+```sql
+CREATE TABLE kasutajad(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    telefon TEXT NOT NULL
+);
+```
+
+### Lihtne ja selge seletus (nagu 5-aastasele):
+
+* **CREATE TABLE kasutajad(...)** – Teeme uue kasti nimega "kasutajad", kuhu hakkame panema inimeste andmeid.
+
+* **id INTEGER PRIMARY KEY AUTOINCREMENT** – "id" on nagu igale inimesele antud järjekorranumber.
+
+  * **INTEGER** – see on lihtsalt arv.
+  * **PRIMARY KEY** – see tähendab: "see on kõige tähtsam number igal paberil". See aitab meil inimesi eristada.
+  * **AUTOINCREMENT** – iga uus inimene saab automaatselt järgmise numbri (1, 2, 3...). Sina ei pea seda ise kirjutama, arvuti teeb seda sinu eest!
+
+* **first\_name TEXT NOT NULL** – Igaühel peab olema eesnimi (tekst), seda ei tohi tühjaks jätta (NOT NULL tähendab "peab olema täidetud!").
+
+* **last\_name TEXT NOT NULL** – Samamoodi peab igal inimesel olema perekonnanimi.
+
+* **email TEXT NOT NULL** – Peab olema e-posti aadress.
+
+* **telefon TEXT NOT NULL** – Peab olema telefoninumber.
+
+---
+
+```sql
+ALTER TABLE kasutajad RENAME TO users;
+```
+
+Muudame kasti nime "users"-iks (see tähendab inglise keeles "kasutajad").
+
+```sql
+ALTER TABLE users RENAME COLUMN telefon TO phone;
+```
+
+Muudame veeru nime "telefon" → "phone" (ka inglise keeles).
+
+```sql
+ALTER TABLE users ADD COLUMN image TEXT;
+```
+
+Lisame uue kasti nimega "image" – see on koht inimese pildi (failinime) jaoks.
+
+```sql
+.schema users
+```
+
+Näitab meile tabeli ülesehitust – nagu vaataksime karbi silti.
+
+---
+
+## Ülesanne 13
+
+```sql
+INSERT INTO users (first_name, last_name, email, phone, image)
+VALUES 
+('Tehvan', 'Marjapuu', 'Tehvan.marjapuu@gmail.com', '555444666', 'tehvan.jpg'),
+('Mario', 'Methhein', 'Mario.methhein@hotmail.ee', '3728969425', 'mario.jpg');
+```
+
+Paneme kasti sisse kaks uut paberit – 2 inimest oma andmetega.
+
+```sql
+.read users.sql
+```
+
+Loeme karpi veel andmeid failist nimega "users.sql".
+
+```sql
+SELECT * FROM users LIMIT 10;
+```
+
+Vaatame esimesed 10 paberit kastis.
+
+---
+
+## Ülesanne 14
+
+```sql
+SELECT * FROM users ORDER BY last_name LIMIT 3;
+```
+
+Vaatame 3 inimest, kelle perekonnanimi on tähestiku järgi eespool.
+
+```sql
+SELECT * FROM users
+WHERE first_name LIKE 'G%' AND email LIKE '%.com'
+ORDER BY email DESC;
+```
+
+Näeme neid, kelle eesnimi algab G-ga ja kelle e-mail lõpeb ".com"-iga.
+
+* **LIKE 'G%'** – tähendab: nimi peab algama tähega G. **%** tähendab "ükskõik mis edasi".
+* **LIKE '%.com'** – tähendab: e-mail lõppeb .com-iga.
+
+```sql
+SELECT id, first_name, last_name, phone,
+    CASE
+        WHEN phone LIKE '372%' THEN 'EESTI'
+        ELSE 'VÄLISMAA'
+    END AS telefonitüüp
+FROM users;
+```
+
+Lisame "telefonitüüp" kasti:
+
+* Kui number algab 372-ga, siis Eesti.
+* Muidu Välismaa.
+* **%** tähendab: ükskõik mis järgneb pärast seda teksti.
+
+```sql
+SELECT first_name, last_name, email, phone,
+    CASE
+        WHEN email LIKE '%.edu' OR email LIKE '%.gov' THEN 'HARIDUSASUTUS'
+        ELSE 'ERAFIRMA'
+    END AS email_kuuluvus
+FROM users
+WHERE phone LIKE '372%'
+ORDER BY last_name
+LIMIT 1;
+```
+
+Näitab ainult ühte Eesti numbriga inimest ja lisab juurde kas tema email on koolist/riigist või eraettevõttest.
+
+---
+
+## Ülesanne 15
+
+```sql
+UPDATE users
+SET email = 'TehvanON.äge@muidugion.com', phone = '123456'
+WHERE first_name = 'Tehvan';
+```
+
+Muudame "Tehvani" andmeid – uus email ja telefon.
+
+```sql
+DELETE FROM users WHERE id BETWEEN 5 AND 10;
+```
+
+Viska kastist välja kõik paberid, mille "id" on 5 kuni 10.
+
+```sql
+SELECT * FROM users LIMIT 10;
+```
+
+Näitab jälle 10 esimest paberit kastis.
+
+---
+
+## Ülesanne 16
+
+Teeme uued kastid hotelli jaoks:
+
+### Kasutajad (inimesed):
+
+```sql
+CREATE TABLE users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    eesnimi TEXT NOT NULL,
+    perenimi TEXT NOT NULL,
+    email TEXT NOT NULL,
+    tel TEXT NOT NULL,
+    profiilipilt TEXT NOT NULL
+);
+```
+
+### Broneeringud (kes millal tuli ja kuhu läks):
+
+```sql
+CREATE TABLE bookings(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    users_id INTEGER,
+    rooms_id INTEGER,
+    saabumine TEXT NOT NULL,
+    lahkumine TEXT NOT NULL,
+    FOREIGN KEY (users_id) REFERENCES users(id),
+    FOREIGN KEY (rooms_id) REFERENCES rooms(id)
+);
+```
+
+### Toa info:
+
+```sql
+CREATE TABLE rooms(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    toa_number TEXT NOT NULL,
+    toa_tyyp TEXT NOT NULL,
+    toa_hind INTEGER NOT NULL,
+    toa_saadavus TEXT NOT NULL
+);
+```
+
+### Maksmise info:
+
+```sql
+CREATE TABLE payments(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    bookings_id INTEGER,
+    arve_summa TEXT NOT NULL,
+    tasumis_paev TEXT NOT NULL,
+    makseviis TEXT NOT NULL,
+    FOREIGN KEY (bookings_id) REFERENCES bookings(id)
+);
+```
+
+Laeme andmeid sisse failidest:
+
+```sql
+.read users2.sql
+.read bookings.sql
+.read payments.sql
+.read rooms.sql
+```
+
+Näitame andmeid koos:
+
+```sql
+SELECT users.eesnimi, users.perenimi, rooms.toa_number, rooms.toa_tyyp
+FROM bookings
+INNER JOIN users ON bookings.users_id = users.id
+INNER JOIN rooms ON bookings.rooms_id = rooms.id;
+```
+
+Kes, millise toa broneeris.
+
+```sql
+SELECT payments.tasumis_paev, payments.arve_summa
+FROM bookings
+INNER JOIN payments ON bookings.id = payments.id;
+```
+
+Millal ja kui palju maksti.
+
+```sql
+SELECT users.eesnimi, users.perenimi, rooms.toa_tyyp, rooms.toa_hind, bookings.saabumine, bookings.lahkumine, payments.arve_summa, payments.tasumis_paev, payments.makseviis
+FROM bookings
+INNER JOIN users ON bookings.users_id = users.id
+INNER JOIN rooms ON bookings.rooms_id = rooms.id
+INNER JOIN payments ON payments.bookings_id = bookings.id;
+```
+
+Kõik info koos (kes, mis tuba, millal tuli/läks, maksmine).
+
+---
+
+## Ülesanne 17
+
+```sql
+SELECT count(users_id), users.eesnimi, users.perenimi
+FROM bookings
+INNER JOIN users ON bookings.users_id = users.id
+GROUP BY users_id
+HAVING count(users_id) > 2;
+```
+
+Näitab, kes broneeris rohkem kui 2 korda.
+
+```sql
+SELECT COUNT(rooms_id) AS Kordus, SUM(payments.arve_summa) AS Summa, users.eesnimi, users.perenimi
+FROM bookings
+INNER JOIN users ON users.id = bookings.users_id
+INNER JOIN payments ON payments.id = bookings.id
+GROUP BY users_id;
+```
+
+Mitu korda broneeris ja kui palju maksis (siin on väike viga, peaks liitma õigesti maksed broneeringuga).
+
+```sql
+SELECT COUNT(rooms_id) AS kordus, users.eesnimi, users.perenimi
+FROM bookings
+INNER JOIN users ON users.id = bookings.users_id
+GROUP BY users_id;
+```
+
+Lihtsalt mitu korda broneeris iga inimene.
+
+```sql
+SELECT count(users_id)
+FROM bookings
+WHERE users_id IN (
+    SELECT users_id
+    FROM bookings
+    GROUP BY users_id
+    HAVING count(users_id) > 2
+)
+GROUP BY users_id;
+```
+
+Loendab mitu inimest on broneerinud rohkem kui 2 korda.
+
+

@@ -1,6 +1,6 @@
 <?php
 	try {
-		// sinu andmed
+		// andmed
 		$db_server = 'localhost';
 		$db_andmebaas = 'tmarjapuu';
 		$db_kasutaja = 'tmarjapuu';
